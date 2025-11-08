@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloc 2 - Bases de l'IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .pdf-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 40px;
+            background: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        /* HEADER */
+        .header {
+            border-bottom: 4px solid #0066FF;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .logo-text {
+            font-size: 32px;
+            font-weight: 900;
+            color: #0066FF;
+            margin-bottom: 10px;
+        }
+        
+        .doc-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: #0066FF;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        
+        .doc-subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        /* SECTIONS */
+        .section {
+            margin: 40px 0;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0066FF;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 6px solid #FF6B35;
+        }
+        
+        .subsection-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0066FF;
+            margin: 30px 0 15px 0;
+        }
+        
+        /* BOXES */
+        .info-box {
+            background: linear-gradient(135deg, #E6F0FF 0%, #F0F8FF 100%);
+            border-left: 6px solid #0066FF;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .info-box h3 {
+            font-size: 20px;
+            color: #0066FF;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .info-box p {
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFFEF5 100%);
+            border-left: 6px solid #FFC107;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .example-box h3 {
+            font-size: 20px;
+            color: #F57C00;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFF5EE 100%);
+            border-left: 6px solid #FF6B35;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .warning-box h3 {
+            font-size: 20px;
+            color: #FF6B35;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #D4EDDA 0%, #F1F8F4 100%);
+            border-left: 6px solid #28A745;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .success-box h3 {
+            font-size: 20px;
+            color: #28A745;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        /* CONVERSATION STYLE */
+        .conversation {
+            background: white;
+            border: 2px solid #E6F0FF;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .user-message {
+            background: #0066FF;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 18px 18px 18px 4px;
+            margin: 10px 0 10px 40px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .user-label {
+            font-size: 12px;
+            color: #999;
+            margin-left: 40px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .ai-message {
+            background: #F0F8FF;
+            color: #333;
+            padding: 15px 20px;
+            border-radius: 18px 18px 4px 18px;
+            margin: 10px 40px 10px 0;
+            font-size: 16px;
+            line-height: 1.6;
+            border: 1px solid #E6F0FF;
+        }
+        
+        .ai-label {
+            font-size: 12px;
+            color: #0066FF;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        /* LISTS */
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 12px 0;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        li strong {
+            color: #0066FF;
+            font-weight: 700;
+        }
+        
+        .key-points {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .key-points li {
+            padding-left: 40px;
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .key-points li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28A745;
+            font-weight: 900;
+            font-size: 24px;
+        }
+        
+        .numbered-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .numbered-steps li {
+            counter-increment: step-counter;
+            padding-left: 50px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .numbered-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            width: 35px;
+            height: 35px;
+            background: #0066FF;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+        }
+        
+        /* TEXT */
+        p {
+            line-height: 1.8;
+            margin: 15px 0;
+            font-size: 16px;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: #FFEB3B;
+            padding: 2px 6px;
+            font-weight: 700;
+        }
+        
+        .emphasis {
+            color: #FF6B35;
+            font-weight: 700;
+        }
+        
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        
+        th {
+            background: #0066FF;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 700;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #F8F9FA;
+        }
+        
+        /* ICONS */
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 2px solid #E6F0FF;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-container">
+        
+        <!-- PAGE 1 -->
+        <div class="page">
+            <div class="header">
+                <div class="logo-text">OZFORMATION</div>
+                <h1 class="doc-title">BLOC 2<br>Bases de l'IA<br>pour Entrepreneurs</h1>
+                <p class="doc-subtitle">Document de synthèse | Formation "L'IA au Service des Entrepreneurs"</p>
+            </div>
+            
+            <div class="info-box">
+                <h3>📚 À propos de ce module</h3>
+                <p>Ce document résume les <strong>concepts fondamentaux</strong> pour comprendre et maîtriser l'intelligence artificielle dans votre activité professionnelle.</p>
+                <p><strong>Durée du module :</strong> 45 minutes<br>
+                <strong>Objectif :</strong> Maîtriser les bases de l'IA générative, les prompts, la génération de contenus et la sécurité</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">1. IA Générative : Qu'est-ce que c'est ?</h2>
+                
+                <h3 class="subsection-title">Définition simple</h3>
+                
+                <div class="info-box">
+                    <h3>🤖 L'IA GÉNÉRATIVE EN QUELQUES MOTS</h3>
+                    <p>L'<strong>IA générative</strong> est une intelligence artificielle capable de <span class="highlight">créer du contenu original</span> à partir de vos instructions : textes, images, musiques, vidéos, code informatique, etc.</p>
+                    <p><strong>Exemples d'IA génératives :</strong></p>
+                    <ul>
+                        <li><strong>ChatGPT, Claude, Gemini</strong> → Génération de texte</li>
+                        <li><strong>DALL-E, Midjourney, Stable Diffusion</strong> → Génération d'images</li>
+                        <li><strong>Suno AI, Udio</strong> → Génération de musique</li>
+                        <li><strong>Runway, Pika</strong> → Génération de vidéos</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Comment ça marche ?</h3>
+                
+                <p>L'IA générative fonctionne en 3 étapes :</p>
+                
+                <ol class="numbered-steps">
+                    <li><strong>Entraînement :</strong> L'IA a été entraînée sur des milliards de textes, images, sons provenant d'Internet</li>
+                    <li><strong>Instruction (Prompt) :</strong> Vous donnez une instruction claire à l'IA en langage naturel</li>
+                    <li><strong>Génération :</strong> L'IA crée un contenu original en s'inspirant de ce qu'elle a appris</li>
+                </ol>
+                
+                <div class="example-box">
+                    <h3>💡 ANALOGIE POUR MIEUX COMPRENDRE</h3>
+                    <p>Imaginez l'IA comme un <strong>assistant ultra-compétent</strong> qui a lu des millions de livres, vu des millions d'images et écouté des millions de chansons. Quand vous lui demandez quelque chose, il crée du contenu original inspiré de tout ce qu'il a appris, mais il ne copie jamais exactement.</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 1/7</div>
+        </div>
+        
+        <!-- PAGE 2 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">2. Le Prompt : Votre Clé pour l'IA</h2>
+                
+                <h3 class="subsection-title">Qu'est-ce qu'un prompt ?</h3>
+                
+                <div class="info-box">
+                    <h3>💬 DÉFINITION</h3>
+                    <p>Un <strong>prompt</strong>, c'est l'<span class="highlight">instruction que vous donnez à l'IA</span> pour obtenir le résultat souhaité. C'est comme une commande dans un restaurant : plus elle est précise, meilleur sera le plat !</p>
+                </div>
+                
+                <h3 class="subsection-title">❌ Méthode traditionnelle (moins efficace)</h3>
+                
+                <p>Beaucoup de gens essaient de deviner ce qu'il faut écrire dans le prompt :</p>
+                
+                <div class="conversation">
+                    <div class="user-label">👤 VOUS</div>
+                    <div class="user-message">
+                        Crée-moi un site internet pour mon entreprise
+                    </div>
+                    <div class="ai-label">🤖 IA (résultat souvent générique)</div>
+                    <div class="ai-message">
+                        Voici un site web basique avec une page d'accueil, une page "À propos" et une page contact...
+                    </div>
+                </div>
+                
+                <p class="emphasis">Problème : Le résultat est trop général et ne correspond pas vraiment à vos besoins !</p>
+                
+                <h3 class="subsection-title">✅ LA MÉTHODE INTELLIGENTE : Laissez l'IA vous poser des questions</h3>
+                
+                <div class="success-box">
+                    <h3>🎯 LE PROMPT MAGIQUE</h3>
+                    <p>Au lieu de deviner ce qu'il faut écrire, <strong>demandez à l'IA de vous poser des questions</strong> pour créer le prompt parfait !</p>
+                </div>
+                
+                <h3 class="subsection-title">Exemple concret : Création d'un site web</h3>
+                
+                <div class="conversation">
+                    <div class="user-label">👤 VOUS (Prompt initial)</div>
+                    <div class="user-message">
+                        J'ai besoin de créer un site internet pour mon entreprise. Pose-moi toutes les questions nécessaires pour comprendre exactement ce dont j'ai besoin avant de me proposer une solution.
+                    </div>
+                    
+                    <div class="ai-label">🤖 IA</div>
+                    <div class="ai-message">
+                        Parfait ! Je vais vous poser quelques questions pour bien cerner votre projet :<br><br>
+                        <strong>1. Quel est votre secteur d'activité ?</strong> (ex: coaching, commerce, artisanat, santé...)<br>
+                        <strong>2. Quels sont les objectifs principaux de ce site ?</strong> (vendre en ligne, présenter vos services, collecter des leads...)<br>
+                        <strong>3. Qui est votre public cible ?</strong> (particuliers, entreprises, tranches d'âge...)<br>
+                        <strong>4. Quelles pages souhaitez-vous ?</strong> (accueil, services, blog, boutique...)<br>
+                        <strong>5. Quel style visuel préférez-vous ?</strong> (moderne, sobre, coloré, minimaliste...)<br>
+                        <strong>6. Avez-vous des exemples de sites que vous aimez ?</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 2/7</div>
+        </div>
+        
+        <!-- PAGE 3 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">2. Le Prompt (suite)</h2>
+                
+                <div class="conversation">
+                    <div class="user-label">👤 VOS RÉPONSES</div>
+                    <div class="user-message">
+                        1. Je suis coach sportif indépendant<br>
+                        2. Je veux présenter mes programmes et permettre la prise de rendez-vous en ligne<br>
+                        3. Particuliers 25-50 ans qui veulent se remettre en forme<br>
+                        4. Accueil, Mes programmes, Témoignages, Blog, Contact<br>
+                        5. Style moderne et dynamique avec des photos de sport<br>
+                        6. Oui, j'aime bien le site de [exemple]
+                    </div>
+                    
+                    <div class="ai-label">🤖 IA (résultat personnalisé et précis)</div>
+                    <div class="ai-message">
+                        Parfait ! Voici une proposition de site sur-mesure pour votre activité de coaching sportif :<br><br>
+                        <strong>Page d'accueil :</strong> Headline accrocheur "Transformez votre corps en 12 semaines", hero image dynamique avec bouton CTA "Réserver un bilan gratuit"<br>
+                        <strong>Mes programmes :</strong> 3 formules (Débutant, Intermédiaire, Expert) avec tarifs et bénéfices<br>
+                        <strong>Témoignages :</strong> Carousel avec photos avant/après et avis clients<br>
+                        <strong>Blog :</strong> Articles conseils nutrition et entraînement<br>
+                        <strong>Contact :</strong> Formulaire + calendrier de réservation en ligne<br><br>
+                        Couleurs : Bleu dynamique #0066FF + Orange énergique #FF6B35<br>
+                        Police : Roboto (moderne et lisible)
+                    </div>
+                </div>
+                
+                <div class="success-box">
+                    <h3>✅ RÉSULTAT</h3>
+                    <p>En laissant l'IA vous poser des questions, vous obtenez un prompt <strong>100 fois plus précis</strong> et un résultat <strong>parfaitement adapté</strong> à vos besoins !</p>
+                </div>
+                
+                <h3 class="subsection-title">Autres exemples de prompts par questions</h3>
+                
+                <div class="example-box">
+                    <h3>📧 EXEMPLE : Email commercial</h3>
+                    <div class="user-message" style="margin: 15px 0;">
+                        J'ai besoin de rédiger un email commercial pour mes clients. Pose-moi des questions pour m'aider à créer l'email parfait.
+                    </div>
+                    <p><strong>L'IA vous demandera :</strong></p>
+                    <ul>
+                        <li>Quel est l'objectif de cet email ? (vente, information, fidélisation)</li>
+                        <li>Qui sont vos destinataires ?</li>
+                        <li>Quelle offre voulez-vous promouvoir ?</li>
+                        <li>Quel ton adopter ? (formel, décontracté, enthousiaste)</li>
+                        <li>Quelle action souhaitez-vous que vos clients fassent ?</li>
+                    </ul>
+                </div>
+                
+                <div class="example-box">
+                    <h3>🎨 EXEMPLE : Logo pour votre entreprise</h3>
+                    <div class="user-message" style="margin: 15px 0;">
+                        Je veux créer un logo pour mon entreprise. Pose-moi les bonnes questions pour générer le logo idéal.
+                    </div>
+                    <p><strong>L'IA vous demandera :</strong></p>
+                    <ul>
+                        <li>Quel est le nom de votre entreprise ?</li>
+                        <li>Que faites-vous exactement ?</li>
+                        <li>Quelles valeurs voulez-vous transmettre ? (confiance, innovation, tradition)</li>
+                        <li>Quelles couleurs préférez-vous ?</li>
+                        <li>Style recherché ? (minimaliste, moderne, vintage, ludique)</li>
+                        <li>Des logos que vous aimez en inspiration ?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 3/7</div>
+        </div>
+        
+        <!-- PAGE 4 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">3. Génération de Contenus</h2>
+                
+                <h3 class="subsection-title">Les différents types de contenus générés par IA</h3>
+                
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Outils populaires</th>
+                        <th>Usages entrepreneurs</th>
+                    </tr>
+                    <tr>
+                        <td><strong>📝 TEXTE</strong></td>
+                        <td>ChatGPT, Claude, Gemini, Perplexity</td>
+                        <td>Emails, posts réseaux sociaux, articles de blog, descriptions produits, réponses clients</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎨 IMAGES</strong></td>
+                        <td>DALL-E, Midjourney, Stable Diffusion, Leonardo AI</td>
+                        <td>Logos, visuels marketing, photos produits, illustrations, bannières web</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎵 MUSIQUE</strong></td>
+                        <td>Suno AI, Udio, Soundraw</td>
+                        <td>Musique d'attente téléphonique, ambiance boutique, jingles publicitaires</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎬 VIDÉO</strong></td>
+                        <td>Runway, Pika, HeyGen</td>
+                        <td>Publicités courtes, démos produits, contenus réseaux sociaux</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎤 VOIX</strong></td>
+                        <td>ElevenLabs, Play.ht, Murf AI</td>
+                        <td>Voix-off vidéos, messages vocaux automatisés, audiobooks</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">Génération de TEXTE</h3>
+                
+                <div class="success-box">
+                    <h3>✅ CAS D'USAGE POUR ENTREPRENEURS</h3>
+                    <ul class="key-points">
+                        <li><strong>Emails commerciaux :</strong> Prospection, relances, newsletters</li>
+                        <li><strong>Contenus web :</strong> Pages de site, fiches produits, FAQ</li>
+                        <li><strong>Réseaux sociaux :</strong> Posts LinkedIn, Facebook, Instagram</li>
+                        <li><strong>Service client :</strong> Réponses types, chatbot, FAQ automatisée</li>
+                        <li><strong>Documents administratifs :</strong> Devis, factures, CGV simplifiées</li>
+                        <li><strong>Traduction :</strong> Contenus multilingues pour l'export</li>
+                    </ul>
+                </div>
+                
+                <div class="example-box">
+                    <h3>💡 EXEMPLE PRATIQUE : Email de relance client</h3>
+                    <div class="user-message" style="margin: 15px 0;">
+                        Rédige un email de relance pour un client qui n'a pas répondu à mon devis. Pose-moi des questions pour personnaliser l'email.
+                    </div>
+                    <p><strong>Questions de l'IA :</strong></p>
+                    <ul>
+                        <li>Depuis combien de temps avez-vous envoyé le devis ? (1 semaine, 2 semaines...)</li>
+                        <li>Quel type de prestation proposiez-vous ?</li>
+                        <li>Y a-t-il eu des échanges depuis ?</li>
+                        <li>Ton souhaité : formel, amical ou décontracté ?</li>
+                        <li>Voulez-vous ajouter une urgence ? (offre limitée, délais...)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 4/7</div>
+        </div>
+        
+        <!-- PAGE 5 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">3. Génération de Contenus (suite)</h2>
+                
+                <h3 class="subsection-title">Génération d'IMAGES</h3>
+                
+                <div class="success-box">
+                    <h3>✅ CAS D'USAGE POUR ENTREPRENEURS</h3>
+                    <ul class="key-points">
+                        <li><strong>Logos et identité visuelle :</strong> Créez rapidement plusieurs propositions</li>
+                        <li><strong>Visuels marketing :</strong> Bannières pub, stories Instagram, miniatures YouTube</li>
+                        <li><strong>Photos produits :</strong> Mises en situation sans photographe</li>
+                        <li><strong>Illustrations blog :</strong> Images uniques pour vos articles</li>
+                        <li><strong>Présentations :</strong> Slides visuellement attractifs</li>
+                    </ul>
+                </div>
+                
+                <div class="example-box">
+                    <h3>💡 PROMPT PAR QUESTIONS : Photo marketing</h3>
+                    <div class="user-message" style="margin: 15px 0;">
+                        J'ai besoin d'une image pour promouvoir mon offre sur les réseaux sociaux. Pose-moi des questions pour créer l'image parfaite.
+                    </div>
+                    <p><strong>Questions de l'IA :</strong></p>
+                    <ul>
+                        <li>Quel produit/service voulez-vous promouvoir ?</li>
+                        <li>Quelle émotion voulez-vous susciter ? (joie, confiance, urgence...)</li>
+                        <li>Public cible ? (âge, genre, profession)</li>
+                        <li>Style visuel ? (photo réaliste, illustration, minimaliste...)</li>
+                        <li>Couleurs de votre marque ?</li>
+                        <li>Faut-il inclure du texte sur l'image ?</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Génération de MUSIQUE</h3>
+                
+                <div class="info-box">
+                    <h3>🎵 APPLICATIONS PROFESSIONNELLES</h3>
+                    <p>Créez des musiques libres de droits pour :</p>
+                    <ul>
+                        <li><strong>Ambiance boutique/restaurant :</strong> Créez votre playlist personnalisée</li>
+                        <li><strong>Vidéos marketing :</strong> Musique de fond pour vos contenus</li>
+                        <li><strong>Attente téléphonique :</strong> Musique d'accueil personnalisée</li>
+                        <li><strong>Événements :</strong> Jingles, intros, musiques d'ambiance</li>
+                    </ul>
+                </div>
+                
+                <div class="example-box">
+                    <h3>💡 EXEMPLE : Musique pour votre boutique (cas Sophie du module vitrine)</h3>
+                    <div class="user-message" style="margin: 15px 0;">
+                        Je veux créer une playlist musicale pour l'ambiance de ma boutique de fleurs. Pose-moi des questions pour générer la musique idéale.
+                    </div>
+                    <p><strong>Questions de l'IA :</strong></p>
+                    <ul>
+                        <li>Quel type d'ambiance recherchez-vous ? (relaxante, énergique, élégante...)</li>
+                        <li>Genre musical préféré ? (jazz, classique, acoustique, lounge...)</li>
+                        <li>Tempo souhaité ? (lent et doux, modéré, rythmé)</li>
+                        <li>Avec ou sans instruments particuliers ?</li>
+                        <li>Durée des morceaux ?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 5/7</div>
+        </div>
+        
+        <!-- PAGE 6 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">4. Formats de Réponse</h2>
+                
+                <h3 class="subsection-title">Pourquoi préciser le format ?</h3>
+                
+                <div class="info-box">
+                    <h3>📋 L'IMPORTANCE DU FORMAT</h3>
+                    <p>Pour obtenir un résultat <strong>immédiatement utilisable</strong>, vous devez dire à l'IA <span class="highlight">dans quel format vous voulez la réponse</span> : tableau, liste, email, script, JSON, etc.</p>
+                </div>
+                
+                <h3 class="subsection-title">Les formats les plus utiles pour entrepreneurs</h3>
+                
+                <table>
+                    <tr>
+                        <th>Format</th>
+                        <th>Quand l'utiliser ?</th>
+                        <th>Exemple de demande</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Tableau</strong></td>
+                        <td>Comparer des données, planifier, organiser</td>
+                        <td>"Présente-moi ces infos sous forme de tableau avec 3 colonnes"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Liste à puces</strong></td>
+                        <td>Actions, étapes, checklist</td>
+                        <td>"Donne-moi 5 actions concrètes sous forme de liste"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email prêt à envoyer</strong></td>
+                        <td>Communication professionnelle</td>
+                        <td>"Rédige un email complet avec objet et signature"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Post réseaux sociaux</strong></td>
+                        <td>Communication marketing</td>
+                        <td>"Format LinkedIn avec emojis et 3 hashtags"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Script/Dialogue</strong></td>
+                        <td>Vidéos, appels téléphoniques</td>
+                        <td>"Crée un script de 30 secondes pour ma vidéo"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Code HTML/CSS</strong></td>
+                        <td>Éléments web</td>
+                        <td>"Génère le code HTML d'un bouton cliquable"</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">Exemples pratiques de demandes de format</h3>
+                
+                <div class="example-box">
+                    <h3>💡 EXEMPLE 1 : Planning hebdomadaire</h3>
+                    <div class="user-message" style="margin: 15px 0;">
+                        Crée-moi un planning de publication pour mes réseaux sociaux. Pose-moi des questions puis présente le résultat sous forme de tableau avec les colonnes : Jour | Heure | Plateforme | Type de contenu | Thème
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h3>💡 EXEMPLE 2 : Email de prospection</h3>
+                    <div class="user-message" style="margin: 15px 0;">
+                        Rédige un email de prospection pour mes services de coaching. Pose-moi des questions puis génère un email complet avec : objet accrocheur, texte personnalisé (150 mots max), call-to-action clair, signature professionnelle
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h3>💡 EXEMPLE 3 : Checklist pour événement</h3>
+                    <div class="user-message" style="margin: 15px 0;">
+                        J'organise une journée portes ouvertes. Pose-moi des questions sur mon événement puis crée une checklist avec 3 sections : Avant (J-7), Pendant (Jour J), Après (J+3). Format : liste avec cases à cocher ☐
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 6/7</div>
+        </div>
+        
+        <!-- PAGE 7 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">5. Sécurité & Confidentialité</h2>
+                
+                <div class="warning-box">
+                    <h3>⚠️ RÈGLES D'OR DE SÉCURITÉ</h3>
+                    <ul class="key-points">
+                        <li><strong>NE JAMAIS</strong> entrer de données clients dans des IA publiques (noms, emails, téléphones, adresses)</li>
+                        <li><strong>NE JAMAIS</strong> partager de mots de passe, codes bancaires, numéros de carte</li>
+                        <li><strong>NE JAMAIS</strong> copier-coller des documents confidentiels (contrats, devis clients, données RH)</li>
+                        <li><strong>TOUJOURS</strong> anonymiser les données sensibles avant de les utiliser</li>
+                        <li><strong>TOUJOURS</strong> vérifier les conditions d'utilisation des plateformes IA</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Versions gratuites vs professionnelles</h3>
+                
+                <table>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Version gratuite</th>
+                        <th>Version professionnelle</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Confidentialité</strong></td>
+                        <td>❌ Données utilisées pour entraîner l'IA</td>
+                        <td>✅ Garantie de confidentialité</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Données</strong></td>
+                        <td>❌ Peuvent être stockées et analysées</td>
+                        <td>✅ Non stockées, non analysées</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Usage commercial</strong></td>
+                        <td>⚠️ Souvent limité</td>
+                        <td>✅ Autorisé sans restriction</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Support</strong></td>
+                        <td>❌ Aucun support</td>
+                        <td>✅ Support prioritaire</td>
+                    </tr>
+                </table>
+                
+                <div class="success-box">
+                    <h3>✅ CHECKLIST DE SÉCURITÉ</h3>
+                    <ol class="numbered-steps">
+                        <li><strong>Utiliser des versions professionnelles</strong> pour votre activité (ChatGPT Team, Claude Pro, etc.)</li>
+                        <li><strong>Anonymiser systématiquement</strong> : remplacer "Jean Dupont" par "Client A", remplacer "jean@email.com" par "email@example.com"</li>
+                        <li><strong>Ne jamais copier-coller</strong> des documents entiers contenant des données sensibles</li>
+                        <li><strong>Vérifier les CGU</strong> de chaque plateforme avant usage commercial</li>
+                        <li><strong>Former vos équipes</strong> aux bonnes pratiques de sécurité IA</li>
+                    </ol>
+                </div>
+                
+                <h3 class="subsection-title">Synthèse du Bloc 2</h3>
+                
+                <div class="info-box">
+                    <h3>📌 POINTS CLÉS À RETENIR</h3>
+                    <ul class="key-points">
+                        <li><strong>IA générative = création de contenu</strong> (texte, image, son, vidéo) à partir d'instructions</li>
+                        <li><strong>Prompt par questions = méthode efficace</strong> : "Pose-moi des questions pour créer [X]"</li>
+                        <li><strong>Préciser le format</strong> pour obtenir un résultat immédiatement utilisable</li>
+                        <li><strong>Sécurité = priorité absolue</strong> : jamais de données clients dans des IA publiques</li>
+                        <li><strong>Versions pro recommandées</strong> pour un usage professionnel sécurisé</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer" style="margin-top: 80px;">
+                <strong>OZFORMATION - L'IA au Service des Entrepreneurs</strong><br>
+                Formation finançable à 100% par votre OPCO (AGEFICE / FAFCEA)<br>
+                📧 oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 7/7</div>
+        </div>
+        
+    </div>
+</body>
+</html>

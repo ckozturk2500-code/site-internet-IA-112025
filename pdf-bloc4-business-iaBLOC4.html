@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloc 4 - Business : Croissance & Développement</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .pdf-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 40px;
+            background: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .header {
+            border-bottom: 4px solid #0066FF;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .logo-text {
+            font-size: 32px;
+            font-weight: 900;
+            color: #0066FF;
+            margin-bottom: 10px;
+        }
+        
+        .doc-title {
+            font-size: 40px;
+            font-weight: 900;
+            color: #0066FF;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        
+        .doc-subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        .section {
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0066FF;
+            margin-bottom: 18px;
+            padding-left: 15px;
+            border-left: 6px solid #FF6B35;
+        }
+        
+        .subsection-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: #0066FF;
+            margin: 22px 0 10px 0;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #E6F0FF 0%, #F0F8FF 100%);
+            border-left: 6px solid #0066FF;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 10px;
+        }
+        
+        .info-box h3 {
+            font-size: 17px;
+            color: #0066FF;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .info-box p {
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .definition-box {
+            background: #FFFEF5;
+            border: 2px solid #FFC107;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+        
+        .definition-box strong {
+            color: #F57C00;
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #D4EDDA 0%, #F1F8F4 100%);
+            border-left: 6px solid #28A745;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 10px;
+        }
+        
+        .formula-box h3 {
+            font-size: 17px;
+            color: #28A745;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .example-box {
+            background: #F8F9FA;
+            border-left: 4px solid #6C757D;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .example-box h4 {
+            font-size: 15px;
+            color: #495057;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFF5EE 100%);
+            border-left: 6px solid #FF6B35;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 10px;
+        }
+        
+        .warning-box h3 {
+            font-size: 17px;
+            color: #FF6B35;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 22px;
+        }
+        
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        li strong {
+            color: #0066FF;
+            font-weight: 700;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding-left: 30px;
+            position: relative;
+            margin: 10px 0;
+        }
+        
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28A745;
+            font-weight: 900;
+            font-size: 18px;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+            font-size: 14px;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: #FFEB3B;
+            padding: 2px 5px;
+            font-weight: 700;
+        }
+        
+        .code-style {
+            background: #F5F5F5;
+            border: 1px solid #DDD;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            margin: 12px 0;
+            white-space: pre-wrap;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+        }
+        
+        th {
+            background: #0066FF;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 700;
+        }
+        
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #F8F9FA;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 12px;
+            border-top: 2px solid #E6F0FF;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .step-box {
+            background: white;
+            border: 2px solid #E6F0FF;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: #0066FF;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 900;
+            margin-right: 10px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-container">
+        
+        <!-- PAGE 1 -->
+        <div class="page">
+            <div class="header">
+                <div class="logo-text">OZFORMATION</div>
+                <h1 class="doc-title">BLOC 4<br>Business : Croissance<br>& Développement</h1>
+                <p class="doc-subtitle">Guide pratique | Formation "L'IA au Service des Entrepreneurs"</p>
+            </div>
+            
+            <div class="info-box">
+                <h3>📚 Objectif de ce bloc</h3>
+                <p>Apprenez à utiliser l'IA pour <strong>développer votre chiffre d'affaires</strong> : automatiser votre marketing, trouver des prospects, gérer vos ventes et surveiller votre marché.</p>
+                <p><strong>Durée :</strong> 45 minutes | <strong>Niveau :</strong> Débutant en marketing digital</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Bases du Marketing Digital</h2>
+                
+                <h3 class="subsection-title">Concepts clés à connaître</h3>
+                
+                <div class="definition-box">
+                    📖 <strong>CRM (Customer Relationship Management) :</strong> Logiciel pour gérer vos contacts clients (coordonnées, historique, interactions). Exemples gratuits/simples : HubSpot Free, Google Sheets, Notion.
+                </div>
+                
+                <div class="definition-box">
+                    📖 <strong>Base email :</strong> Liste de contacts (clients/prospects) avec leurs adresses email. Vous pouvez commencer avec un simple fichier Excel ou utiliser des outils comme Mailchimp (gratuit jusqu'à 500 contacts).
+                </div>
+                
+                <div class="definition-box">
+                    📖 <strong>Lead (prospect) :</strong> Personne intéressée par votre offre mais qui n'a pas encore acheté. Un lead "chaud" est très intéressé, un lead "froid" l'est peu.
+                </div>
+                
+                <h2 class="section-title">1. Marketing Digital IA : Nurturing</h2>
+                
+                <div class="definition-box">
+                    📖 <strong>Nurturing (de l'anglais "nourrir") :</strong> Technique pour entretenir la relation avec vos prospects en leur envoyant du contenu utile régulièrement, jusqu'à ce qu'ils deviennent clients.
+                </div>
+                
+                <h3 class="subsection-title">Pourquoi c'est important ?</h3>
+                
+                <p><strong>80% des ventes</strong> nécessitent 5 à 12 points de contact avant de se concrétiser. Le nurturing automatisé par IA vous permet de rester présent sans effort.</p>
+                
+                <h3 class="subsection-title">Scénario de nurturing type</h3>
+                
+                <div class="step-box">
+                    <span class="step-number">1</span><strong>Contact initial</strong> : Le prospect télécharge un guide, demande un devis, s'inscrit à votre newsletter
+                </div>
+                
+                <div class="step-box">
+                    <span class="step-number">2</span><strong>Email J+1</strong> : Remerciement + contenu de valeur
+                </div>
+                
+                <div class="step-box">
+                    <span class="step-number">3</span><strong>Email J+3</strong> : Cas client / témoignage
+                </div>
+                
+                <div class="step-box">
+                    <span class="step-number">4</span><strong>Email J+7</strong> : Offre spéciale / invitation consultation
+                </div>
+                
+                <div class="step-box">
+                    <span class="step-number">5</span><strong>Email J+14</strong> : Rappel + urgence
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 1/7</div>
+        </div>
+        
+        <!-- PAGE 2 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">1. Nurturing avec l'IA (suite)</h2>
+                
+                <h3 class="subsection-title">Comment l'IA automatise le nurturing</h3>
+                
+                <div class="formula-box">
+                    <h3>✅ PROMPT PAR QUESTIONS : Créer une séquence nurturing</h3>
+                    <div class="code-style">J'ai besoin de créer une séquence d'emails de nurturing pour mes prospects. Pose-moi des questions sur mon activité, mon public cible, et ce que je veux accomplir, puis génère-moi une séquence complète sur 2 semaines.</div>
+                    
+                    <p style="margin-top: 12px;"><strong>L'IA vous demandera :</strong></p>
+                    <ul style="margin-top: 8px; font-size: 13px;">
+                        <li>Quel est votre secteur d'activité ?</li>
+                        <li>Comment vos prospects vous trouvent-ils ?</li>
+                        <li>Quel est votre objectif final ? (vente, RDV, inscription...)</li>
+                        <li>Quels contenus avez-vous déjà ? (guides, vidéos, articles...)</li>
+                        <li>Quel ton adopter ? (formel, amical, expert...)</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Templates d'emails nurturing par étape</h3>
+                
+                <div class="example-box">
+                    <h4>📧 EMAIL 1 : Bienvenue (J+1)</h4>
+                    <div class="code-style">Tu es expert en marketing digital. Rédige un email de bienvenue pour un prospect qui vient de [action initiale]. Secteur : [votre activité]. Objectif : créer une première connexion positive. Format : Objet personnel + 120 mots + lien vers [ressource gratuite] + signature chaleureuse.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>📧 EMAIL 2 : Valeur (J+3)</h4>
+                    <div class="code-style">Crée un email apportant de la valeur à un prospect de [secteur]. Partage 3 conseils pratiques sur [problématique client]. Ton : expert mais accessible. Format : 150 mots + CTA soft "Découvrir nos solutions".</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>📧 EMAIL 3 : Preuve sociale (J+7)</h4>
+                    <div class="code-style">Rédige un email présentant un témoignage client pour [activité]. Racontez comment [Client fictif] a résolu [problème] grâce à [solution]. Format : storytelling 180 mots + CTA "Obtenez les mêmes résultats".</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>📧 EMAIL 4 : Offre (J+14)</h4>
+                    <div class="code-style">Crée un email de conversion pour [activité]. Propose [offre spéciale] avec urgence légère (places limitées / offre temporaire). Ton : persuasif sans être agressif. Format : 130 mots + bouton CTA clair.</div>
+                </div>
+                
+                <h3 class="subsection-title">Cas pratique : Coach sportif</h3>
+                
+                <div class="info-box">
+                    <h3>💼 SCÉNARIO COMPLET</h3>
+                    <p><strong>Contexte :</strong> Marc (coach sportif) reçoit 10 demandes de devis par mois mais seulement 2 se concrétisent.</p>
+                    <p><strong>Solution nurturing IA :</strong></p>
+                    <ul style="margin-top: 8px;">
+                        <li><strong>J+0 :</strong> Envoi automatique du devis + email "Merci pour votre intérêt"</li>
+                        <li><strong>J+2 :</strong> Email "3 erreurs à éviter en reprise sportive" (valeur)</li>
+                        <li><strong>J+5 :</strong> Témoignage vidéo d'un client transformé</li>
+                        <li><strong>J+10 :</strong> "Offre découverte : 1ère séance -50%"</li>
+                    </ul>
+                    <p><strong>Résultat :</strong> Taux de conversion passe de 20% à 40%</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 2/7</div>
+        </div>
+        
+        <!-- PAGE 3 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">2. Prospection & Vente IA</h2>
+                
+                <h3 class="subsection-title">A. Lead Generation (génération de prospects)</h3>
+                
+                <div class="definition-box">
+                    📖 <strong>Lead Generation :</strong> Ensemble des techniques pour attirer de nouveaux prospects intéressés par votre offre. L'IA vous aide à créer du contenu attractif et à trouver des contacts.
+                </div>
+                
+                <h3 class="subsection-title">3 méthodes de lead generation avec IA</h3>
+                
+                <div class="info-box">
+                    <h3>🎯 MÉTHODE 1 : Créer des "lead magnets"</h3>
+                    <p><strong>Lead magnet :</strong> Contenu gratuit offert en échange d'un email (guide PDF, checklist, webinaire, modèle...)</p>
+                    
+                    <div class="formula-box" style="margin-top: 12px; background: white;">
+                        <h3 style="color: #0066FF;">✅ PROMPT PAR QUESTIONS</h3>
+                        <div class="code-style">J'ai besoin de créer un lead magnet pour attirer des prospects dans [secteur]. Pose-moi des questions sur mes clients idéaux et leurs problèmes, puis propose-moi 5 idées de lead magnets + le plan détaillé du meilleur.</div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h3>🔍 MÉTHODE 2 : Trouver des prospects sur LinkedIn</h3>
+                    <p>L'IA peut vous aider à rédiger des messages de prospection personnalisés pour LinkedIn.</p>
+                    
+                    <div class="example-box" style="margin-top: 12px;">
+                        <h4>Template prospection LinkedIn</h4>
+                        <div class="code-style">Tu es expert en prospection B2B. Rédige un message LinkedIn pour [cible professionnelle] travaillant dans [secteur]. Propose [votre solution] sans être vendeur. Ton : professionnel et personnalisé. Format : 80 mots max, question ouverte à la fin.</div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h3>📝 MÉTHODE 3 : Créer du contenu qui attire</h3>
+                    <p>Publications régulières = visibilité = prospects. L'IA génère vos contenus.</p>
+                    
+                    <div class="formula-box" style="margin-top: 12px; background: white;">
+                        <h3 style="color: #0066FF;">✅ PROMPT PLANNING CONTENU</h3>
+                        <div class="code-style">J'ai besoin d'un plan de contenu mensuel pour attirer des prospects sur [plateforme]. Secteur : [activité]. Pose-moi des questions sur mes services et mon audience, puis crée un calendrier de 12 posts avec thèmes + accroches.</div>
+                    </div>
+                </div>
+                
+                <h3 class="subsection-title">Cas pratique : Fleuriste (Sophie)</h3>
+                
+                <table>
+                    <tr>
+                        <th>Action</th>
+                        <th>Prompt IA utilisé</th>
+                        <th>Résultat</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Lead magnet</strong></td>
+                        <td>"Crée un guide PDF '10 astuces pour faire durer vos bouquets' (5 pages)"</td>
+                        <td>50 emails collectés/mois</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Posts Instagram</strong></td>
+                        <td>"Génère 8 posts sur l'entretien des fleurs + visuels DALL-E"</td>
+                        <td>+200 abonnés/mois</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partenariats</strong></td>
+                        <td>"Rédige 5 emails pour wedding planners locaux"</td>
+                        <td>3 partenariats signés</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 3/7</div>
+        </div>
+        
+        <!-- PAGE 4 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">2. Prospection & Vente IA (suite)</h2>
+                
+                <h3 class="subsection-title">B. Qualification automatique des prospects</h3>
+                
+                <div class="definition-box">
+                    📖 <strong>Qualification :</strong> Processus pour déterminer si un prospect est "intéressant" (a le budget, le besoin, l'urgence) avant de perdre du temps avec lui.
+                </div>
+                
+                <p>L'IA analyse les réponses/comportements et classe vos prospects automatiquement.</p>
+                
+                <div class="info-box">
+                    <h3>🤖 UTILISER UN ASSISTANT IA (ex: Comet)</h3>
+                    <p><strong>Comet</strong> et d'autres assistants IA peuvent automatiser la qualification via des formulaires intelligents.</p>
+                    
+                    <p style="margin-top: 10px;"><strong>Comment ça marche :</strong></p>
+                    <ol style="font-size: 13px; margin-top: 8px;">
+                        <li>Créez un formulaire avec 5-7 questions de qualification</li>
+                        <li>L'IA pose les questions de manière conversationnelle</li>
+                        <li>Elle note automatiquement chaque prospect (scoring)</li>
+                        <li>Vous ne contactez que les prospects qualifiés</li>
+                    </ol>
+                </div>
+                
+                <h3 class="subsection-title">Questions de qualification types</h3>
+                
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Exemple de question</th>
+                        <th>Pourquoi ?</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Besoin</strong></td>
+                        <td>"Quel est votre principal défi en ce moment ?"</td>
+                        <td>Vérifie s'il a vraiment besoin de vous</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Urgence</strong></td>
+                        <td>"Quand souhaitez-vous démarrer ?"</td>
+                        <td>Priorité : maintenant > dans 6 mois</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Budget</strong></td>
+                        <td>"Avez-vous un budget alloué ?"</td>
+                        <td>Évite les prospects sans moyens</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Décision</strong></td>
+                        <td>"Qui décide dans votre entreprise ?"</td>
+                        <td>Parler au bon interlocuteur</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">C. Scoring d'intérêt (notation de l'engagement)</h3>
+                
+                <div class="definition-box">
+                    📖 <strong>Scoring :</strong> Attribution d'une note (ex: 1 à 10) à chaque prospect selon son niveau d'intérêt, mesuré par ses actions (ouverture emails, clics, téléchargements...).
+                </div>
+                
+                <div class="info-box">
+                    <h3>⭐ SYSTÈME DE SCORING SIMPLE</h3>
+                    <table style="background: white; margin-top: 10px;">
+                        <tr>
+                            <th>Action du prospect</th>
+                            <th>Points</th>
+                        </tr>
+                        <tr>
+                            <td>Ouvre un email</td>
+                            <td>+1 point</td>
+                        </tr>
+                        <tr>
+                            <td>Clique sur un lien</td>
+                            <td>+3 points</td>
+                        </tr>
+                        <tr>
+                            <td>Télécharge une ressource</td>
+                            <td>+5 points</td>
+                        </tr>
+                        <tr>
+                            <td>Visite la page tarifs</td>
+                            <td>+7 points</td>
+                        </tr>
+                        <tr>
+                            <td>Remplit un formulaire</td>
+                            <td>+10 points</td>
+                        </tr>
+                    </table>
+                    
+                    <p style="margin-top: 10px;"><strong>Classification :</strong></p>
+                    <ul style="font-size: 13px;">
+                        <li><strong>0-5 points</strong> = Prospect froid ❄️ (nurturing long terme)</li>
+                        <li><strong>6-15 points</strong> = Prospect tiède 🌤️ (relances régulières)</li>
+                        <li><strong>16+ points</strong> = Prospect chaud 🔥 (appel immédiat !)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 4/7</div>
+        </div>
+        
+        <!-- PAGE 5 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">2. Prospection & Vente IA (suite)</h2>
+                
+                <h3 class="subsection-title">D. Scripts personnalisés (emails adaptés)</h3>
+                
+                <p>L'IA génère des emails <strong>personnalisés automatiquement</strong> selon le profil et le comportement du prospect.</p>
+                
+                <div class="formula-box">
+                    <h3>✅ PROMPT PAR QUESTIONS : Emails segmentés</h3>
+                    <div class="code-style">J'ai besoin de créer 3 versions d'un email de vente pour des profils différents. Pose-moi des questions sur mes segments de clients et leurs motivations, puis rédige un email adapté à chaque profil.</div>
+                    
+                    <p style="margin-top: 10px;"><strong>L'IA créera par exemple :</strong></p>
+                    <ul style="font-size: 13px; margin-top: 8px;">
+                        <li><strong>Email A :</strong> Pour prospects sensibles au prix (focus ROI, économies)</li>
+                        <li><strong>Email B :</strong> Pour prospects pressés (focus rapidité, simplicité)</li>
+                        <li><strong>Email C :</strong> Pour prospects experts (focus technique, performance)</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Outils simples pour automatiser</h3>
+                
+                <table>
+                    <tr>
+                        <th>Outil</th>
+                        <th>Usage</th>
+                        <th>Prix</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Mailchimp</strong></td>
+                        <td>Envoi emails automatisés, segmentation</td>
+                        <td>Gratuit jusqu'à 500 contacts</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brevo (ex-Sendinblue)</strong></td>
+                        <td>Emails + CRM simple</td>
+                        <td>Gratuit jusqu'à 300 emails/jour</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Notion + IA</strong></td>
+                        <td>Base de données prospects + automatisations</td>
+                        <td>Gratuit (plan perso)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Sheets + ChatGPT</strong></td>
+                        <td>Qualification manuelle aidée par IA</td>
+                        <td>Gratuit</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comet / Claude</strong></td>
+                        <td>Assistant IA pour formulaires intelligents</td>
+                        <td>Selon abonnement</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">Cas pratique complet : Karim (food-truck)</h3>
+                
+                <div class="example-box">
+                    <h4>🚚 PROBLÈME</h4>
+                    <p>Karim reçoit des demandes pour événements privés mais perd du temps avec des prospects non sérieux.</p>
+                </div>
+                
+                <div class="formula-box">
+                    <h3 style="color: #28A745;">✅ SOLUTION IA</h3>
+                    
+                    <p><strong>Étape 1 : Formulaire de qualification automatique</strong></p>
+                    <div class="code-style" style="font-size: 12px;">Crée un formulaire conversationnel (Comet) qui pose : type d'événement, nombre de personnes, date, budget estimé, lieu. L'IA note chaque réponse et classe en 3 catégories.</div>
+                    
+                    <p style="margin-top: 10px;"><strong>Étape 2 : Emails personnalisés</strong></p>
+                    <ul style="font-size: 13px;">
+                        <li><strong>Prospect A</strong> (mariage 150 pers) → Email premium avec menu gastronomique</li>
+                        <li><strong>Prospect B</strong> (anniversaire 30 pers) → Email formule standard</li>
+                        <li><strong>Prospect C</strong> (budget trop bas) → Email poli de refus + alternatives</li>
+                    </ul>
+                    
+                    <p style="margin-top: 10px;"><strong>Résultat :</strong> Temps de qualification divisé par 3, taux de conversion x2</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 5/7</div>
+        </div>
+        
+        <!-- PAGE 6 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">3. Veille Stratégique & Positionnement</h2>
+                
+                <div class="definition-box">
+                    📖 <strong>Veille stratégique :</strong> Surveillance continue de votre marché (concurrents, tendances, innovations) pour adapter votre stratégie et rester compétitif.
+                </div>
+                
+                <h3 class="subsection-title">A. Surveillance automatique (prix & actions concurrents)</h3>
+                
+                <div class="info-box">
+                    <h3>🔍 COMMENT L'IA SURVEILLE VOS CONCURRENTS</h3>
+                    <p>L'IA peut automatiquement :</p>
+                    <ul class="checklist" style="margin-top: 10px;">
+                        <li>Visiter les sites concurrents et noter les changements de prix</li>
+                        <li>Analyser leurs publications sur réseaux sociaux</li>
+                        <li>Détecter leurs nouvelles offres ou promotions</li>
+                        <li>Vous alerter en temps réel</li>
+                    </ul>
+                </div>
+                
+                <div class="formula-box">
+                    <h3>✅ PROMPT PAR QUESTIONS : Analyse concurrentielle</h3>
+                    <div class="code-style">J'ai besoin d'analyser mes 3 principaux concurrents dans [secteur]. Pose-moi des questions sur ce que je veux surveiller, puis crée-moi un tableau comparatif et un plan d'action pour me différencier.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>📊 PROMPT : Comparaison de prix</h4>
+                    <div class="code-style">Analyse les tarifs de [concurrent 1, 2, 3] pour [service/produit]. Compare avec mes prix : [vos tarifs]. Identifie mes avantages compétitifs et propose un positionnement prix optimal.</div>
+                </div>
+                
+                <h3 class="subsection-title">B. Détection de tendances</h3>
+                
+                <p>L'IA peut analyser des milliers de sources (réseaux sociaux, actualités, forums) pour détecter les <strong>tendances émergentes</strong> dans votre secteur.</p>
+                
+                <div class="formula-box">
+                    <h3>✅ PROMPT PAR QUESTIONS : Tendances secteur</h3>
+                    <div class="code-style">J'ai besoin de comprendre les nouvelles tendances dans [secteur]. Pose-moi des questions sur mon activité et mes clients, puis identifie 5 tendances majeures avec des recommandations d'adaptation pour mon entreprise.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>📈 EXEMPLES DE TENDANCES DÉTECTÉES PAR IA</h4>
+                    <ul style="font-size: 13px;">
+                        <li><strong>Coach sportif :</strong> "Montée du fitness en ligne post-COVID → Créer offre hybride présentiel/visio"</li>
+                        <li><strong>Fleuriste :</strong> "Bouquets éco-responsables +40% recherches → Gamme 'zéro déchet'"</li>
+                        <li><strong>Restaurant :</strong> "Click & collect +200% → Optimiser commande en ligne"</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">C. Identification de niches</h3>
+                
+                <div class="definition-box">
+                    📖 <strong>Niche :</strong> Segment de marché spécifique et peu exploité où la concurrence est faible. Exemple : "coaching sportif pour femmes enceintes" au lieu de "coaching sportif" (trop large).
+                </div>
+                
+                <div class="formula-box">
+                    <h3>✅ PROMPT PAR QUESTIONS : Trouver sa niche</h3>
+                    <div class="code-style">J'ai besoin d'identifier une niche rentable dans [secteur large]. Pose-moi des questions sur mes compétences uniques, mes clients préférés et mes valeurs, puis propose 5 niches avec analyse de potentiel.</div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 6/7</div>
+        </div>
+        
+        <!-- PAGE 7 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">3. Veille Stratégique (suite)</h2>
+                
+                <h3 class="subsection-title">Outils de veille avec IA</h3>
+                
+                <table>
+                    <tr>
+                        <th>Outil</th>
+                        <th>Ce qu'il fait</th>
+                        <th>Usage</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Alerts</strong></td>
+                        <td>Alertes email sur mots-clés</td>
+                        <td>Surveiller concurrents + secteur (gratuit)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perplexity AI</strong></td>
+                        <td>Recherche IA en temps réel</td>
+                        <td>Analyser tendances du moment</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ChatGPT + plugins</strong></td>
+                        <td>Analyse de contenus web</td>
+                        <td>Comparer concurrents, détecter niches</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Answer The Public</strong></td>
+                        <td>Questions posées sur Google</td>
+                        <td>Comprendre besoins clients (version gratuite)</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">Plan d'action veille mensuelle</h3>
+                
+                <div class="step-box">
+                    <span class="step-number">1</span><strong>Semaine 1 :</strong> Analyse des prix concurrents (30 min avec IA)
+                </div>
+                
+                <div class="step-box">
+                    <span class="step-number">2</span><strong>Semaine 2 :</strong> Recherche de tendances secteur (Perplexity/ChatGPT)
+                </div>
+                
+                <div class="step-box">
+                    <span class="step-number">3</span><strong>Semaine 3 :</strong> Analyse des contenus performants concurrents (réseaux sociaux)
+                </div>
+                
+                <div class="step-box">
+                    <span class="step-number">4</span><strong>Semaine 4 :</strong> Identification opportunités/niches + ajustement stratégie
+                </div>
+                
+                <h3 class="subsection-title">Synthèse Bloc 4</h3>
+                
+                <div class="info-box">
+                    <h3>📌 RÉCAPITULATIF : Ce que l'IA fait pour votre business</h3>
+                    
+                    <table style="background: white; margin-top: 12px;">
+                        <tr>
+                            <th>Domaine</th>
+                            <th>Actions IA</th>
+                            <th>Gain</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Nurturing</strong></td>
+                            <td>Séquences emails automatisées</td>
+                            <td>+20% conversion</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lead gen</strong></td>
+                            <td>Lead magnets + contenus attractifs</td>
+                            <td>+50 prospects/mois</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Qualification</strong></td>
+                            <td>Formulaires intelligents + scoring</td>
+                            <td>-70% temps perdu</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vente</strong></td>
+                            <td>Emails personnalisés par segment</td>
+                            <td>+30% taux d'ouverture</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Veille</strong></td>
+                            <td>Surveillance auto concurrents</td>
+                            <td>Réactivité +80%</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="formula-box">
+                    <h3>✅ CHECKLIST DÉMARRAGE</h3>
+                    <ul class="checklist">
+                        <li>Créer votre base email (fichier Excel suffit au début)</li>
+                        <li>Définir votre séquence nurturing (4-5 emails)</li>
+                        <li>Créer 1 lead magnet avec l'IA</li>
+                        <li>Mettre en place un formulaire de qualification simple</li>
+                        <li>Configurer Google Alerts sur vos concurrents</li>
+                        <li>Lancer votre première campagne test (50 contacts)</li>
+                    </ul>
+                </div>
+                
+                <div class="warning-box">
+                    <h3>⚠️ RAPPEL IMPORTANT</h3>
+                    <p>L'IA <strong>automatise et optimise</strong>, mais elle ne remplace pas :</p>
+                    <ul style="margin-top: 8px; font-size: 13px;">
+                        <li>Le contact humain authentique</li>
+                        <li>Votre connaissance unique de vos clients</li>
+                        <li>Votre créativité et votre expertise métier</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Utilisez l'IA comme <strong>assistant</strong>, pas comme remplacement !</p>
+                </div>
+            </div>
+            
+            <div class="footer" style="margin-top: 50px;">
+                <strong>OZFORMATION - L'IA au Service des Entrepreneurs</strong><br>
+                Formation finançable à 100% par votre OPCO (AGEFICE / FAFCEA)<br>
+                📧 oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 7/8</div>
+        </div>
+        
+        <!-- PAGE 8 - GUIDE DES OUTILS -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">📦 Guide des Outils Recommandés</h2>
+                
+                <div class="info-box">
+                    <h3>💡 Comment utiliser ce guide ?</h3>
+                    <p>Pour chaque tâche, nous recommandons :</p>
+                    <ul style="font-size: 13px; margin-top: 8px;">
+                        <li><strong>1 outil GRATUIT</strong> pour démarrer sans investissement</li>
+                        <li><strong>1 outil PRO</strong> (payant) si vous avez besoin de plus de fonctionnalités</li>
+                        <li><strong>Pourquoi le choisir</strong> et comment l'utiliser</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">1. Génération de Contenu Texte</h3>
+                
+                <table>
+                    <tr>
+                        <th style="width: 25%;">Outil</th>
+                        <th style="width: 15%;">Prix</th>
+                        <th style="width: 60%;">Pourquoi / Quand l'utiliser</th>
+                    </tr>
+                    <tr style="background: #E8F5E9;">
+                        <td><strong>🥇 Claude</strong><br>(Anthropic)</td>
+                        <td><strong>Gratuit</strong><br>+20€/mois Pro</td>
+                        <td><strong>MEILLEUR pour entrepreneurs !</strong> Textes longs, ton naturel, suit bien les instructions. Idéal pour : emails, articles, posts réseaux sociaux.<br><strong>👉 Utilisez ça en priorité</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ChatGPT</strong><br>(OpenAI)</td>
+                        <td>Gratuit<br>+20€/mois Plus</td>
+                        <td>Très populaire, polyvalent. Bon pour : brainstorming, listes, idées rapides. Version gratuite limitée.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gemini</strong><br>(Google)</td>
+                        <td>Gratuit<br>+20€/mois Advanced</td>
+                        <td>Intégration Google Workspace (Drive, Docs, Gmail). Bon si vous utilisez déjà Google.</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">2. Emails Automatisés & Nurturing</h3>
+                
+                <table>
+                    <tr>
+                        <th style="width: 25%;">Outil</th>
+                        <th style="width: 15%;">Prix</th>
+                        <th style="width: 60%;">Pourquoi / Quand l'utiliser</th>
+                    </tr>
+                    <tr style="background: #E8F5E9;">
+                        <td><strong>🥇 Comet</strong><br>(Assistant IA)</td>
+                        <td><strong>Variable</strong></td>
+                        <td><strong>SOLUTION COMPLÈTE !</strong> Automatise TOUT : remplissage formulaires, gestion emails Gmail, organisation agenda. Parfait pour : entrepreneurs qui veulent 1 seul outil pour tout gérer.<br><strong>👉 Notre recommandation #1</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mailchimp</strong></td>
+                        <td><strong>0€</strong> (500 contacts)<br>13€/mois (Pro)</td>
+                        <td>Interface simple en français. Gratuit pour démarrer. Bon pour : newsletters, séquences emails simples.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brevo</strong><br>(ex-Sendinblue)</td>
+                        <td><strong>0€</strong> (300 emails/jour)<br>25€/mois (Starter)</td>
+                        <td>Français, CRM inclus, SMS possibles. Bon pour : TPE qui veulent email + CRM dans 1 outil.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gmail + Claude</strong></td>
+                        <td><strong>0€</strong></td>
+                        <td>Solution manuelle : Claude rédige, vous envoyez via Gmail. Bon pour : démarrer sans outil complexe.</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">3. Formulaires Intelligents & Qualification</h3>
+                
+                <table>
+                    <tr>
+                        <th style="width: 25%;">Outil</th>
+                        <th style="width: 15%;">Prix</th>
+                        <th style="width: 60%;">Pourquoi / Quand l'utiliser</th>
+                    </tr>
+                    <tr style="background: #E8F5E9;">
+                        <td><strong>🥇 Comet</strong><br>(Assistant IA)</td>
+                        <td><strong>Variable</strong></td>
+                        <td><strong>AUTOMATISATION TOTALE !</strong> Remplit formulaires, analyse réponses, qualifie prospects automatiquement.<br><strong>👉 Idéal pour gagner du temps</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Forms</strong></td>
+                        <td><strong>0€</strong></td>
+                        <td>Gratuit, simple, s'intègre à Sheets. Pas d'IA mais fait le job pour débuter. Bon pour : questionnaires basiques.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Typeform</strong></td>
+                        <td>0€ (10 réponses/mois)<br>29€/mois (Basic)</td>
+                        <td>Design moderne, conversationnel. Bon pour : formulaires clients élégants. Logique conditionnelle en version payante.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tally</strong></td>
+                        <td><strong>0€</strong> (illimité)</td>
+                        <td>Gratuit sans limite ! Alternative à Typeform. Bon pour : TPE budget serré.</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 8/8</div>
+        </div>
+        
+        <!-- PAGE 9 - GUIDE DES OUTILS (suite) -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">📦 Guide des Outils (suite)</h2>
+                
+                <h3 class="subsection-title">4. Veille Stratégique & Analyse Concurrents</h3>
+                
+                <table>
+                    <tr>
+                        <th style="width: 25%;">Outil</th>
+                        <th style="width: 15%;">Prix</th>
+                        <th style="width: 60%;">Pourquoi / Quand l'utiliser</th>
+                    </tr>
+                    <tr style="background: #E8F5E9;">
+                        <td><strong>🥇 Perplexity</strong></td>
+                        <td><strong>0€</strong><br>+20€/mois Pro</td>
+                        <td><strong>MEILLEUR pour veille !</strong> Recherche temps réel, sources citées, résumés clairs. Parfait pour : analyser tendances, surveiller concurrents, détecter opportunités.<br><strong>👉 Notre recommandation #1</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Alerts</strong></td>
+                        <td><strong>0€</strong></td>
+                        <td>Alertes email sur mots-clés. Gratuit mais basique. Bon pour : surveiller mentions de votre marque ou concurrents.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Answer The Public</strong></td>
+                        <td>0€ (3 recherches/jour)<br>99$/mois (Pro)</td>
+                        <td>Visualise les questions posées sur Google. Bon pour : comprendre besoins clients, trouver sujets de contenu.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Claude + Recherche manuelle</strong></td>
+                        <td><strong>0€</strong></td>
+                        <td>Visitez sites concurrents, copiez infos, demandez à Claude d'analyser. Solution manuelle mais efficace pour démarrer.</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">5. Gestion CRM & Base de Contacts</h3>
+                
+                <table>
+                    <tr>
+                        <th style="width: 25%;">Outil</th>
+                        <th style="width: 15%;">Prix</th>
+                        <th style="width: 60%;">Pourquoi / Quand l'utiliser</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Sheets</strong></td>
+                        <td><strong>0€</strong></td>
+                        <td>Le plus simple pour démarrer ! Créez colonnes : Nom, Email, Téléphone, Statut, Notes. Claude peut vous aider à l'organiser.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Notion</strong></td>
+                        <td><strong>0€</strong> (perso)<br>10€/mois (équipe)</td>
+                        <td>Base de données + notes + tâches. Très flexible. Bon pour : entrepreneurs organisés qui veulent tout centraliser.</td>
+                    </tr>
+                    <tr style="background: #E8F5E9;">
+                        <td><strong>HubSpot Free</strong></td>
+                        <td><strong>0€</strong></td>
+                        <td><strong>CRM pro gratuit !</strong> Suivi contacts, emails, deals. Complet mais courbe d'apprentissage. Bon pour : croissance sérieuse.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brevo CRM</strong></td>
+                        <td><strong>0€</strong></td>
+                        <td>CRM + Email dans 1 outil. Interface française simple. Bon pour : petites entreprises qui veulent efficacité.</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">6. Création Visuelle (Bonus)</h3>
+                
+                <table>
+                    <tr>
+                        <th style="width: 25%;">Outil</th>
+                        <th style="width: 15%;">Prix</th>
+                        <th style="width: 60%;">Pourquoi / Quand l'utiliser</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Canva</strong></td>
+                        <td><strong>0€</strong><br>13€/mois Pro</td>
+                        <td>Design sans compétences. Templates email, posts, présentations. Gratuit suffit largement au début.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DALL-E (ChatGPT)</strong></td>
+                        <td>Inclus ChatGPT Plus (20€/mois)</td>
+                        <td>Génération d'images IA. Bon pour : visuels marketing rapides. Attention au droit d'auteur.</td>
+                    </tr>
+                </table>
+                
+                <div class="formula-box">
+                    <h3>🎯 NOTRE STACK RECOMMANDÉE POUR DÉMARRER (100% GRATUIT)</h3>
+                    <ul class="checklist" style="margin-top: 10px;">
+                        <li><strong>Texte :</strong> Claude (rédaction emails, contenus)</li>
+                        <li><strong>Emails :</strong> Gmail + Claude OU Comet (si accès)</li>
+                        <li><strong>CRM :</strong> Google Sheets (simple) OU Notion (plus avancé)</li>
+                        <li><strong>Formulaires :</strong> Google Forms OU Tally</li>
+                        <li><strong>Veille :</strong> Perplexity + Google Alerts</li>
+                        <li><strong>Design :</strong> Canva (version gratuite)</li>
+                    </ul>
+                    <p style="margin-top: 12px;"><strong>Budget total : 0€/mois</strong> pour commencer !</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 9/9</div>
+        </div>
+        
+    </div>
+</body>
+</html>

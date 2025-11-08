@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloc 5 - Projet Final & Récapitulatif</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .pdf-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 40px;
+            background: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .header {
+            border-bottom: 4px solid #0066FF;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .logo-text {
+            font-size: 32px;
+            font-weight: 900;
+            color: #0066FF;
+            margin-bottom: 10px;
+        }
+        
+        .doc-title {
+            font-size: 40px;
+            font-weight: 900;
+            color: #0066FF;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        
+        .doc-subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        .section {
+            margin: 25px 0;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0066FF;
+            margin-bottom: 15px;
+            padding-left: 12px;
+            border-left: 6px solid #FF6B35;
+        }
+        
+        .subsection-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0066FF;
+            margin: 20px 0 10px 0;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #E6F0FF 0%, #F0F8FF 100%);
+            border-left: 6px solid #0066FF;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        
+        .info-box h3 {
+            font-size: 16px;
+            color: #0066FF;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .info-box p {
+            line-height: 1.6;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #D4EDDA 0%, #F1F8F4 100%);
+            border-left: 6px solid #28A745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        
+        .success-box h3 {
+            font-size: 16px;
+            color: #28A745;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFF5EE 100%);
+            border-left: 6px solid #FF6B35;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+        
+        .warning-box h3 {
+            font-size: 16px;
+            color: #FF6B35;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .recap-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .recap-card {
+            background: white;
+            border: 3px solid #E6F0FF;
+            border-radius: 12px;
+            padding: 15px;
+            transition: all 0.3s;
+        }
+        
+        .recap-card:hover {
+            border-color: #0066FF;
+            box-shadow: 0 4px 12px rgba(0,102,255,0.1);
+        }
+        
+        .recap-card h4 {
+            font-size: 16px;
+            font-weight: 900;
+            color: #0066FF;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .bloc-number {
+            width: 32px;
+            height: 32px;
+            background: #0066FF;
+            color: white;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 900;
+            margin-right: 10px;
+        }
+        
+        .recap-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 8px;
+        }
+        
+        .recap-card li {
+            font-size: 12px;
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .recap-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28A745;
+            font-weight: 900;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+        
+        li strong {
+            color: #0066FF;
+            font-weight: 700;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding-left: 28px;
+            position: relative;
+            margin: 10px 0;
+        }
+        
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            color: #0066FF;
+            font-weight: 900;
+            font-size: 18px;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+        
+        th {
+            background: #0066FF;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 700;
+        }
+        
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background: #F8F9FA;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #0066FF;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 15px 0;
+            padding-left: 15px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #FF6B35;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #0066FF;
+        }
+        
+        .timeline-item strong {
+            color: #0066FF;
+            font-size: 14px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 12px;
+            border-top: 2px solid #E6F0FF;
+            color: #999;
+            font-size: 11px;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .highlight-stat {
+            text-align: center;
+            background: linear-gradient(135deg, #0066FF 0%, #0044CC 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .highlight-stat .number {
+            font-size: 48px;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .highlight-stat .label {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-container">
+        
+        <!-- PAGE 1 - RÉCAPITULATIF FORMATION -->
+        <div class="page">
+            <div class="header">
+                <div class="logo-text">OZFORMATION</div>
+                <h1 class="doc-title">BLOC 5 & Récapitulatif<br>Complet de la Formation</h1>
+                <p class="doc-subtitle">Document de synthèse | L'IA au Service des Entrepreneurs</p>
+            </div>
+            
+            <div class="success-box">
+                <h3>🎉 FÉLICITATIONS !</h3>
+                <p>Vous êtes arrivé au dernier bloc de la formation. Ce document récapitule tout ce que vous avez appris et vous guide vers votre <strong>projet final personnalisé</strong>.</p>
+            </div>
+            
+            <h2 class="section-title">📚 Récapitulatif des 5 Blocs</h2>
+            
+            <div class="recap-grid">
+                <div class="recap-card">
+                    <h4><span class="bloc-number">0</span>MODULE VITRINE</h4>
+                    <ul>
+                        <li>4 cas d'entrepreneurs (Marc, Sophie, Karim, Laura)</li>
+                        <li>Chiffres clés IA : 58% adoption, 20h gagnées</li>
+                        <li>ROI : 3,50€ pour 1€ investi</li>
+                        <li>Financement 100% OPCO</li>
+                    </ul>
+                </div>
+                
+                <div class="recap-card">
+                    <h4><span class="bloc-number">1</span>ÉTHIQUE & LÉGAL</h4>
+                    <ul>
+                        <li>RGPD 2025 : 72h délai effacement</li>
+                        <li>AI Act : 4 niveaux de risque</li>
+                        <li>Droit d'auteur : seul l'humain est propriétaire</li>
+                        <li>Biais algorithmiques à éviter</li>
+                        <li>Transparence obligatoire</li>
+                    </ul>
+                </div>
+                
+                <div class="recap-card">
+                    <h4><span class="bloc-number">2</span>BASES DE L'IA</h4>
+                    <ul>
+                        <li>IA générative = création de contenu</li>
+                        <li>Prompt = instruction à l'IA</li>
+                        <li>Méthode par questions (la plus facile)</li>
+                        <li>Génération : texte, images, musique, vidéo</li>
+                        <li>Sécurité : jamais de données clients</li>
+                    </ul>
+                </div>
+                
+                <div class="recap-card">
+                    <h4><span class="bloc-number">3</span>PRATIQUE</h4>
+                    <ul>
+                        <li>Formule R.C.T.F (Rôle, Contexte, Tâche, Format)</li>
+                        <li>Templates prêts à l'emploi</li>
+                        <li>Prompts par questions pour tout</li>
+                        <li>IA pour texte, images, musique, vidéo</li>
+                        <li>Pièges à éviter</li>
+                    </ul>
+                </div>
+                
+                <div class="recap-card" style="grid-column: span 2;">
+                    <h4><span class="bloc-number">4</span>BUSINESS : CROISSANCE & DÉVELOPPEMENT</h4>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px;">
+                        <div>
+                            <strong style="color: #0066FF; display: block; margin-bottom: 5px;">Nurturing</strong>
+                            <ul style="margin-top: 5px;">
+                                <li>Séquences emails automatisées</li>
+                                <li>4 templates (bienvenue, valeur, preuve, offre)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="color: #0066FF; display: block; margin-bottom: 5px;">Lead Generation</strong>
+                            <ul style="margin-top: 5px;">
+                                <li>Lead magnets</li>
+                                <li>Prospection LinkedIn</li>
+                                <li>Qualification auto</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="color: #0066FF; display: block; margin-bottom: 5px;">Veille Stratégique</strong>
+                            <ul style="margin-top: 5px;">
+                                <li>Surveillance concurrents</li>
+                                <li>Détection tendances</li>
+                                <li>Identification niches</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-stat">
+                <span class="number">5 BLOCS</span>
+                <span class="label">+ de 30 outils et techniques maîtrisés</span>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 1/5</div>
+        </div>
+        
+        <!-- PAGE 2 - VOTRE PROJET FINAL -->
+        <div class="page">
+            <h2 class="section-title">🎯 Votre Projet Final Personnalisé</h2>
+            
+            <div class="info-box">
+                <h3>Objectif du projet</h3>
+                <p>Appliquer concrètement ce que vous avez appris en créant une solution IA pour <strong>votre propre activité</strong>. Le projet doit être <strong>réel, mesurable et utile</strong>.</p>
+            </div>
+            
+            <h3 class="subsection-title">Étape 1 : Choisir votre type de projet</h3>
+            
+            <table>
+                <tr>
+                    <th style="width: 30%;">Type de projet</th>
+                    <th>Description</th>
+                    <th style="width: 20%;">Difficulté</th>
+                </tr>
+                <tr>
+                    <td><strong>📧 Automatisation Marketing</strong></td>
+                    <td>Créer une séquence nurturing complète (4-5 emails) + lead magnet</td>
+                    <td>⭐⭐ Moyen</td>
+                </tr>
+                <tr>
+                    <td><strong>🎨 Identité Visuelle</strong></td>
+                    <td>Créer logo + 10 visuels marketing (posts, bannières) avec IA</td>
+                    <td>⭐⭐ Moyen</td>
+                </tr>
+                <tr>
+                    <td><strong>📝 Stratégie Contenu</strong></td>
+                    <td>Planning 3 mois de contenus + 5 articles/posts rédigés</td>
+                    <td>⭐⭐⭐ Avancé</td>
+                </tr>
+                <tr>
+                    <td><strong>🔍 Veille & Positionnement</strong></td>
+                    <td>Analyse concurrentielle complète + stratégie différenciation</td>
+                    <td>⭐⭐⭐ Avancé</td>
+                </tr>
+                <tr>
+                    <td><strong>🚀 Projet Global</strong></td>
+                    <td>Combiner plusieurs aspects (marketing + visuel + veille)</td>
+                    <td>⭐⭐⭐⭐ Expert</td>
+                </tr>
+            </table>
+            
+            <h3 class="subsection-title">Étape 2 : Exemples de projets par secteur</h3>
+            
+            <div class="recap-grid">
+                <div class="info-box" style="margin: 0;">
+                    <h3>🏋️ Coach sportif</h3>
+                    <p><strong>Projet :</strong> Automatisation complète</p>
+                    <ul style="font-size: 12px; margin-top: 5px;">
+                        <li>Lead magnet "Guide 7 jours remise en forme"</li>
+                        <li>4 emails nurturing automatisés</li>
+                        <li>10 posts Instagram générés par IA</li>
+                        <li>Formulaire qualification prospects</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box" style="margin: 0;">
+                    <h3>🌸 Fleuriste</h3>
+                    <p><strong>Projet :</strong> Présence digitale</p>
+                    <ul style="font-size: 12px; margin-top: 5px;">
+                        <li>Refonte identité visuelle (logo + charte)</li>
+                        <li>20 visuels bouquets générés IA</li>
+                        <li>Musique d'ambiance boutique</li>
+                        <li>Planning contenu réseaux sociaux 3 mois</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box" style="margin: 0;">
+                    <h3>🚚 Food-truck</h3>
+                    <p><strong>Projet :</strong> Prospection B2B</p>
+                    <ul style="font-size: 12px; margin-top: 5px;">
+                        <li>Base prospects événements (200 contacts)</li>
+                        <li>Formulaire qualification automatique</li>
+                        <li>3 templates emails selon budget</li>
+                        <li>Analyse concurrentielle locale</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box" style="margin: 0;">
+                    <h3>📸 Photographe</h3>
+                    <p><strong>Projet :</strong> Efficacité administrative</p>
+                    <ul style="font-size: 12px; margin-top: 5px;">
+                        <li>Templates emails clients automatisés</li>
+                        <li>Formulaire booking intelligent</li>
+                        <li>Génération descriptions portfolios</li>
+                        <li>Veille tendances photo mariage</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="success-box">
+                <h3>✅ CRITÈRES D'UN BON PROJET</h3>
+                <ul class="checklist">
+                    <li><strong>Spécifique :</strong> Objectif clair et mesurable</li>
+                    <li><strong>Utile :</strong> Répond à un vrai besoin de votre activité</li>
+                    <li><strong>Réalisable :</strong> Faisable avec vos compétences actuelles</li>
+                    <li><strong>Complet :</strong> Utilise au moins 3 techniques apprises</li>
+                    <li><strong>Documenté :</strong> Vous gardez tous vos prompts et résultats</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 2/5</div>
+        </div>
+        
+        <!-- PAGE 3 - GUIDE PROJET -->
+        <div class="page">
+            <h2 class="section-title">📋 Guide de Réalisation du Projet</h2>
+            
+            <h3 class="subsection-title">Structure recommandée du projet</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>Semaine 1 : Diagnostic & Choix</strong>
+                    <ul style="margin-top: 5px;">
+                        <li>Identifiez votre besoin prioritaire</li>
+                        <li>Choisissez le type de projet</li>
+                        <li>Définissez vos objectifs mesurables</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <strong>Semaine 2 : Recherche & Planification</strong>
+                    <ul style="margin-top: 5px;">
+                        <li>Collectez les informations nécessaires</li>
+                        <li>Créez votre plan d'action détaillé</li>
+                        <li>Listez les outils IA à utiliser</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <strong>Semaine 3-4 : Production</strong>
+                    <ul style="margin-top: 5px;">
+                        <li>Créez vos contenus avec l'IA</li>
+                        <li>Testez et affinez vos prompts</li>
+                        <li>Documentez votre processus</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <strong>Semaine 5 : Test & Ajustement</strong>
+                    <ul style="margin-top: 5px;">
+                        <li>Testez votre projet en conditions réelles</li>
+                        <li>Recueillez les premiers retours</li>
+                        <li>Ajustez selon les résultats</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <strong>Semaine 6 : Présentation & Bilan</strong>
+                    <ul style="margin-top: 5px;">
+                        <li>Préparez votre présentation (visio finale)</li>
+                        <li>Analysez vos résultats</li>
+                        <li>Planifiez la suite (plan d'action 3 mois)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3 class="subsection-title">Livrables attendus</h3>
+            
+            <table>
+                <tr>
+                    <th>Livrable</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><strong>1. Document projet</strong></td>
+                    <td>Présentation de votre projet : besoin, objectifs, solution proposée (2-3 pages)</td>
+                </tr>
+                <tr>
+                    <td><strong>2. Productions IA</strong></td>
+                    <td>Tous les contenus créés (emails, visuels, textes, etc.)</td>
+                </tr>
+                <tr>
+                    <td><strong>3. Bibliothèque prompts</strong></td>
+                    <td>Tous les prompts utilisés (copiez-les pour les réutiliser)</td>
+                </tr>
+                <tr>
+                    <td><strong>4. Résultats mesurables</strong></td>
+                    <td>Métriques concrètes (temps gagné, leads générés, engagement...)</td>
+                </tr>
+                <tr>
+                    <td><strong>5. Plan d'action 3 mois</strong></td>
+                    <td>Comment vous allez continuer après la formation</td>
+                </tr>
+            </table>
+            
+            <div class="warning-box">
+                <h3>⚠️ PIÈGES À ÉVITER</h3>
+                <ul style="margin-top: 8px; font-size: 12px;">
+                    <li><strong>Projet trop ambitieux :</strong> Commencez petit, vous pourrez agrandir après</li>
+                    <li><strong>Pas de mesure :</strong> Définissez comment vous allez mesurer le succès</li>
+                    <li><strong>Oublier de documenter :</strong> Gardez TOUS vos prompts, vous les réutiliserez</li>
+                    <li><strong>Ne pas tester :</strong> Testez en conditions réelles avant la présentation</li>
+                    <li><strong>Viser la perfection :</strong> Le but est d'apprendre, pas d'être parfait du premier coup</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 3/5</div>
+        </div>
+        
+        <!-- PAGE 4 - PLAN D'ACTION 3 MOIS -->
+        <div class="page">
+            <h2 class="section-title">📅 Plan d'Action sur 3 Mois</h2>
+            
+            <div class="info-box">
+                <h3>🎯 Objectif</h3>
+                <p>Après la formation, continuez à utiliser l'IA quotidiennement pour <strong>ancrer les habitudes</strong> et voir des <strong>résultats concrets</strong> sur votre activité.</p>
+            </div>
+            
+            <h3 class="subsection-title">🗓️ MOIS 1 : Consolidation</h3>
+            
+            <table>
+                <tr>
+                    <th style="width: 20%;">Semaine</th>
+                    <th>Actions prioritaires</th>
+                    <th style="width: 25%;">Objectif</th>
+                </tr>
+                <tr>
+                    <td><strong>S1-S2</strong></td>
+                    <td>
+                        • Déployez votre projet final en conditions réelles<br>
+                        • Utilisez l'IA pour 1 tâche quotidienne minimum<br>
+                        • Créez votre bibliothèque de prompts favoris
+                    </td>
+                    <td>Prise de vitesse</td>
+                </tr>
+                <tr>
+                    <td><strong>S3-S4</strong></td>
+                    <td>
+                        • Mesurez vos premiers résultats (temps gagné, leads...)<br>
+                        • Affinez vos prompts selon vos besoins<br>
+                        • Testez 2 nouveaux outils IA
+                    </td>
+                    <td>Optimisation</td>
+                </tr>
+            </table>
+            
+            <h3 class="subsection-title">🗓️ MOIS 2 : Expansion</h3>
+            
+            <table>
+                <tr>
+                    <th style="width: 20%;">Semaine</th>
+                    <th>Actions prioritaires</th>
+                    <th style="width: 25%;">Objectif</th>
+                </tr>
+                <tr>
+                    <td><strong>S5-S6</strong></td>
+                    <td>
+                        • Automatisez 1 nouveau processus business<br>
+                        • Créez du contenu régulier avec l'IA (3x/semaine)<br>
+                        • Lancez votre première campagne nurturing
+                    </td>
+                    <td>Croissance</td>
+                </tr>
+                <tr>
+                    <td><strong>S7-S8</strong></td>
+                    <td>
+                        • Analysez vos concurrents avec l'IA (veille)<br>
+                        • Générez 50 nouveaux leads<br>
+                        • Créez 1 lead magnet supplémentaire
+                    </td>
+                    <td>Développement</td>
+                </tr>
+            </table>
+            
+            <h3 class="subsection-title">🗓️ MOIS 3 : Maîtrise</h3>
+            
+            <table>
+                <tr>
+                    <th style="width: 20%;">Semaine</th>
+                    <th>Actions prioritaires</th>
+                    <th style="width: 25%;">Objectif</th>
+                </tr>
+                <tr>
+                    <td><strong>S9-S10</strong></td>
+                    <td>
+                        • Évaluez votre ROI IA sur 3 mois<br>
+                        • Formez un collaborateur/partenaire<br>
+                        • Optimisez vos meilleurs processus
+                    </td>
+                    <td>Mesure impact</td>
+                </tr>
+                <tr>
+                    <td><strong>S11-S12</strong></td>
+                    <td>
+                        • Planifiez les 6 prochains mois<br>
+                        • Explorez 1 usage avancé (API, automatisation...)<br>
+                        • Partagez vos résultats (témoignage)
+                    </td>
+                    <td>Pérennisation</td>
+                </tr>
+            </table>
+            
+            <div class="success-box">
+                <h3>🎯 OBJECTIFS CHIFFRÉS À 3 MOIS</h3>
+                <ul class="checklist">
+                    <li>⏱️ <strong>Temps gagné :</strong> Au moins 15-20h/mois sur tâches répétitives</li>
+                    <li>📧 <strong>Marketing :</strong> 100+ prospects qualifiés générés</li>
+                    <li>📝 <strong>Contenu :</strong> 30+ publications créées avec l'IA</li>
+                    <li>💰 <strong>Business :</strong> +20% de taux de conversion grâce au nurturing</li>
+                    <li>🚀 <strong>Compétences :</strong> Maîtrise de 5+ outils IA en autonomie</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 4/5</div>
+        </div>
+        
+        <!-- PAGE 5 - ÉVALUATION FINALE -->
+        <div class="page">
+            <h2 class="section-title">✅ Grille d'Évaluation Finale</h2>
+            
+            <div class="info-box">
+                <h3>📊 Auto-évaluation</h3>
+                <p>Cochez les compétences que vous maîtrisez maintenant. <strong>Objectif : 80% minimum</strong> pour valider la formation.</p>
+            </div>
+            
+            <h3 class="subsection-title">Compétences Fondamentales (Blocs 1-2)</h3>
+            
+            <ul class="checklist">
+                <li>Je connais les obligations RGPD et AI Act pour mon activité</li>
+                <li>Je sais éviter les pièges juridiques (droit d'auteur, biais)</li>
+                <li>Je comprends le fonctionnement de l'IA générative</li>
+                <li>Je maîtrise la méthode par questions pour créer des prompts</li>
+                <li>Je sais quand utiliser quelle IA (Claude, ChatGPT, Perplexity...)</li>
+            </ul>
+            
+            <h3 class="subsection-title">Compétences Pratiques (Bloc 3)</h3>
+            
+            <ul class="checklist">
+                <li>Je crée des prompts efficaces avec la formule R.C.T.F</li>
+                <li>Je génère des emails professionnels avec l'IA</li>
+                <li>Je crée des visuels marketing adaptés à mon activité</li>
+                <li>Je sais générer de la musique libre de droits</li>
+                <li>Je documente tous mes prompts pour les réutiliser</li>
+            </ul>
+            
+            <h3 class="subsection-title">Compétences Business (Bloc 4)</h3>
+            
+            <ul class="checklist">
+                <li>J'ai créé une séquence nurturing automatisée</li>
+                <li>Je génère des leads avec des contenus IA</li>
+                <li>Je qualifie mes prospects automatiquement</li>
+                <li>Je fais ma veille concurrentielle avec l'IA</li>
+                <li>J'utilise les bons outils pour chaque tâche</li>
+            </ul>
+            
+            <h3 class="subsection-title">Projet Final (Bloc 5)</h3>
+            
+            <ul class="checklist">
+                <li>J'ai réalisé un projet concret et mesurable</li>
+                <li>J'ai obtenu des résultats quantifiables</li>
+                <li>J'ai constitué ma bibliothèque de prompts</li>
+                <li>J'ai présenté mon projet lors de la visio finale</li>
+                <li>J'ai mon plan d'action sur 3 mois</li>
+            </ul>
+            
+            <div class="success-box">
+                <h3>🏆 CERTIFICATION</h3>
+                <p><strong>Vous avez validé la formation si :</strong></p>
+                <ul style="margin-top: 10px; font-size: 13px;">
+                    <li>✅ Au moins <strong>16 cases cochées sur 20</strong> (80%)</li>
+                    <li>✅ Projet final présenté et approuvé</li>
+                    <li>✅ Plan d'action 3 mois établi</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>💡 ET APRÈS LA FORMATION ?</h3>
+                <p style="margin-bottom: 8px;"><strong>3 façons de continuer à progresser :</strong></p>
+                <ol style="font-size: 13px;">
+                    <li><strong>Pratique quotidienne :</strong> Utilisez l'IA pour 1 tâche minimum par jour</li>
+                    <li><strong>Veille technologique :</strong> Suivez l'actualité IA (nouveaux outils, mises à jour)</li>
+                    <li><strong>Communauté :</strong> Échangez avec d'autres entrepreneurs formés</li>
+                </ol>
+            </div>
+            
+            <div class="highlight-stat">
+                <span class="number" style="font-size: 36px;">🎓</span><br>
+                <span class="label" style="font-size: 18px; font-weight: 700; margin-top: 10px; display: block;">FORMATION COMPLÉTÉE</span>
+                <span class="label">Vous maîtrisez maintenant l'IA pour votre business !</span>
+            </div>
+            
+            <div class="footer" style="margin-top: 30px;">
+                <strong>OZFORMATION - L'IA au Service des Entrepreneurs</strong><br>
+                Formation finançable à 100% par votre OPCO (AGEFICE / FAFCEA)<br>
+                📧 oztuformation@gmail.com<br><br>
+                <strong>Merci de votre confiance et félicitations pour votre réussite ! 🚀</strong>
+            </div>
+            <div class="page-number">Page 5/5</div>
+        </div>
+        
+    </div>
+</body>
+</html>

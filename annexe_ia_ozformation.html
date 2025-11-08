@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Page HTML</title>
+</head>
+<body>
+    <!-- Collez votre code HTML ici -->
+    
+</body>
+</html><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annexe - L'IA transforme VOTRE métier - OZFORMATION</title>
+    <style>
+        @media print {
+            body { margin: 0; padding: 0; }
+            .page-break { page-break-before: always; }
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 100%);
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 42px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .intro-box {
+            background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+            border-left: 4px solid #4f46e5;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+        
+        .intro-box p {
+            font-size: 18px;
+            color: #374151;
+            line-height: 1.8;
+        }
+        
+        .intro-box strong { color: #4338ca; }
+        
+        .sector {
+            margin-bottom: 50px;
+            page-break-inside: avoid;
+        }
+        
+        .sector-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px 8px 0 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .sector-content {
+            border: 2px solid #c7d2fe;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            background: white;
+        }
+        
+        .profile {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .profile:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .profile-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #4338ca;
+        }
+        
+        .profile-number {
+            background: #e0e7ff;
+            color: #4338ca;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .use-case {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            margin-left: 44px;
+        }
+        
+        .use-case-bullet {
+            color: #6366f1;
+            margin-right: 10px;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+        
+        .use-case-text {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 4px solid #4f46e5;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .cta-box h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .cta-box p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #4338ca;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .branding {
+            text-align: center;
+            margin-top: 30px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        .branding p { margin: 5px 0; }
+        .branding strong { font-weight: 600; }
+        
+        .header-center {
+            text-align: center;
+            padding-bottom: 40px;
+            border-bottom: 4px solid #4f46e5;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-center">
+            <span class="badge">ANNEXE - GUIDE PRATIQUE</span>
+            <h1>L'IA transforme VOTRE métier</h1>
+            <p class="subtitle">Découvrez comment l'intelligence artificielle peut révolutionner votre quotidien professionnel, quel que soit votre secteur d'activité</p>
+        </div>
+
+        <div class="intro-box">
+            <p><strong>Vous êtes unique, vos besoins aussi.</strong> Cette annexe répertorie plus de 60 métiers et 240 applications concrètes de l'IA. Trouvez votre profil et inspirez-vous des possibilités qui s'offrent à vous pour gagner du temps, développer votre activité et vous démarquer de la concurrence.</p>
+        </div>
+
+        <!-- SANTÉ & BIEN-ÊTRE -->
+        <div class="sector">
+            <div class="sector-header">SANTÉ & BIEN-ÊTRE</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Ostéopathe / Kinésithérapeute / Chiropracteur</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Transcription et résumé des consultations avec plan d'exercices personnalisé</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de fiches patient PDF avec recommandations illustrées</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de musique d'ambiance personnalisée pour la salle d'attente</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Automatisation des rappels de rendez-vous et conseils post-séance</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Psychologue / Coach de vie</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Résumé structuré des séances avec points clés et objectifs</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de supports visuels pour exercices thérapeutiques</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de contenus éducatifs (infographies sur la gestion du stress)</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Préparation d'emails de suivi personnalisés entre séances</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">3</span>Nutritionniste / Diététicien</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de plans alimentaires personnalisés</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de recettes adaptées aux contraintes du patient</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Infographies nutritionnelles pour réseaux sociaux</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Analyse et synthèse des journaux alimentaires clients</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">4</span>Sophrologue / Hypnothérapeute</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Scripts de séances personnalisés selon les besoins</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de musiques/ambiances sonores pour les exercices</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de guides d'exercices à domicile</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Supports visuels de relaxation et méditation</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">5</span>Infirmier libéral / Aide-soignant</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Organisation optimisée des tournées et planning patients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Résumés de soins et transmissions automatisées</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de fiches explicatives pour les soins à domicile</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion des renouvellements d'ordonnances et suivi</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORMATION & CONSEIL -->
+        <div class="sector page-break">
+            <div class="sector-header">FORMATION & CONSEIL</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Formateur indépendant / Consultant formation</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Transcription et compte-rendu automatique des sessions</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Suivi personnalisé des stagiaires avec synthèse des entretiens</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de supports PowerPoint et visuels pédagogiques</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de quiz et évaluations personnalisées</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Coach sportif / Personal trainer</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Programmes d'entraînement personnalisés générés automatiquement</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Suivi nutritionnel et conseils adaptés par client</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Vidéos démonstratives avec voix-off explicative</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Planning optimisé des séances et gestion des groupes</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">3</span>Consultant en management / RH</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Analyse de données RH et génération de rapports</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de présentations stratégiques</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Synthèse d'entretiens individuels et bilans de compétences</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de plans de formation personnalisés</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">4</span>Consultant en stratégie d'entreprise</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Analyse de marchés et synthèse concurrentielle</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de business plans et études de faisabilité</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de présentations pour comités de direction</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Veille stratégique automatisée et alertes sectorielles</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMMERCE & VENTE -->
+        <div class="sector page-break">
+            <div class="sector-header">COMMERCE & VENTE</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Commerçant (boutique physique)</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de visuels pour promotions et réseaux sociaux</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Musique d'ambiance personnalisée et légale pour le magasin</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de newsletters et communications clients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Analyse des tendances de vente et prévisions de stock</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>E-commerçant</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Rédaction de fiches produits optimisées SEO</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération d'images produits et visuels marketing</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Réponses automatiques aux questions fréquentes clients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de campagnes email personnalisées par segment</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">3</span>Agent immobilier</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Rédaction d'annonces immobilières attractives</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de visites virtuelles commentées</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de supports de présentation personnalisés</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Synthèse des visites et feedbacks prospects</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">4</span>Agent commercial / VRP</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Préparation de pitchs de vente personnalisés</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Synthèse des entretiens clients et comptes-rendus</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de propositions commerciales sur-mesure</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation des tournées et planning commercial</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">5</span>Responsable de rayon / Manager retail</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération automatique de plannings équipes optimisés</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Analyse des performances rayon et recommandations</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de briefs produits pour les équipes</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion des commandes et prévisions de stock</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARTISANAT & MÉTIERS TECHNIQUES -->
+        <div class="sector page-break">
+            <div class="sector-header">ARTISANAT & MÉTIERS TECHNIQUES</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Plombier / Électricien / Chauffagiste</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de devis détaillés et personnalisés</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de fiches explicatives pour clients (entretien, garanties)</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation des tournées et planning interventions</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Vidéos tutoriels de maintenance pour clients</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Menuisier / Ébéniste</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Visualisation 3D de projets pour clients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de descriptifs techniques et devis</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de contenu pour portfolio en ligne</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Plans techniques commentés et personnalisés</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">3</span>Coiffeur / Esthéticienne / Barbier</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion intelligente des rendez-vous et rappels</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de visuels avant/après pour portfolio</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de conseils personnalisés post-prestation</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Contenus réseaux sociaux et promotions</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">4</span>Mécanicien / Garagiste</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de devis et factures détaillés</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de fiches explicatives réparations pour clients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation du planning atelier</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Vidéos explicatives entretien véhicules</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SERVICES AUX PARTICULIERS -->
+        <div class="sector page-break">
+            <div class="sector-header">SERVICES AUX PARTICULIERS</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Photographe</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de contrats et devis personnalisés</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de descriptions pour galeries et réseaux sociaux</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Retouche et amélioration d'images assistée IA</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de books thématiques pour prospection</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Graphiste / Designer</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de concepts visuels initiaux</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de présentations clients professionnelles</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Déclinaisons automatiques de chartes graphiques</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation du processus créatif (moodboards, recherches)</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">3</span>Rédacteur / Copywriter</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Recherches et documentation automatisées</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de structures d'articles et outlines</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation SEO des contenus</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Déclinaisons de contenus multi-formats</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">4</span>Community manager / Social media manager</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Planification de contenus éditoriaux</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de visuels et posts multilingues</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Analyse des performances et recommandations</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Réponses automatiques aux commentaires fréquents</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">5</span>Développeur web freelance</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de code et documentation</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de contenus pour sites clients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Debugging assisté et optimisation de code</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de propositions techniques</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESTAURATION & HÔTELLERIE -->
+        <div class="sector page-break">
+            <div class="sector-header">RESTAURATION & HÔTELLERIE</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Restaurateur / Traiteur</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de menus attractifs et descriptions gourmandes</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de visuels pour réseaux sociaux</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation des plannings équipe et approvisionnements</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Réponses automatiques aux réservations</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Food-truck / Street food</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de menus ardoise et visuels</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de posts promotionnels géolocalisés</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Musique d'ambiance personnalisée</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion des stocks et prévisions</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">3</span>Hôtelier / Gérant chambre d'hôtes</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Rédaction d'annonces multilingues attractives</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Réponses automatiques aux demandes de réservation</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de guides touristiques locaux personnalisés</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de newsletters et offres saisonnières</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRANSPORT & LOGISTIQUE -->
+        <div class="sector page-break">
+            <div class="sector-header">TRANSPORT & LOGISTIQUE</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Chauffeur VTC / Taxi</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation des tournées et calculs d'itinéraires</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de factures et justificatifs automatiques</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Réponses automatiques aux demandes de réservation</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion de l'agenda et disponibilités</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Déménageur</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de devis détaillés avec inventaire</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation du planning et calcul des volumes</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de fiches conseils déménagement pour clients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion administrative et facturation automatisée</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">3</span>Livreur / Coursier indépendant</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation des tournées multi-destinations</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de justificatifs et preuves de livraison</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion des plannings et disponibilités</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Réponses automatiques aux clients</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BÂTIMENT & CONSTRUCTION -->
+        <div class="sector page-break">
+            <div class="sector-header">BÂTIMENT & CONSTRUCTION</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Maçon / Entreprise générale du bâtiment</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de devis détaillés et plans</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de visuels 3D pour projets clients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation des plannings chantiers</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Documentation photographique automatique avant/après</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Peintre / Décorateur</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Visualisation couleurs et ambiances pour clients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de devis détaillés par pièce</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de moodboards et propositions décoratives</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion des plannings et approvisionnements</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">3</span>Paysagiste / Jardinier</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Visualisation 3D de projets d'aménagement</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de plans d'entretien saisonniers</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de fiches conseils plantes pour clients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Devis automatisés avec calendrier d'intervention</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JURIDIQUE & ADMINISTRATIF -->
+        <div class="sector page-break">
+            <div class="sector-header">JURIDIQUE & ADMINISTRATIF</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Assistant administratif / Secrétaire indépendant</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Transcription de réunions et comptes-rendus</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de courriers administratifs</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de tableaux de bord et rapports</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion d'agendas et prises de rendez-vous</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Comptable / Expert-comptable</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Analyse automatique de documents comptables</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de rapports financiers synthétiques</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de présentations pour clients</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Automatisation des relances clients</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">3</span>Traducteur</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Pré-traduction et optimisation de flux</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de glossaires terminologiques</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Adaptation culturelle de contenus</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Contrôle qualité et cohérence multilingue</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IMMOBILIER & ARCHITECTURE -->
+        <div class="sector page-break">
+            <div class="sector-header">IMMOBILIER & ARCHITECTURE</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Architecte</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de concepts et esquisses préliminaires</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de présentations clients immersives</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Rédaction de descriptifs techniques</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Visualisation 3D et rendus photoréalistes</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Syndic de copropriété</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de procès-verbaux d'assemblée</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de comptes-rendus synthétiques</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Automatisation des communications copropriétaires</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion des plannings travaux et interventions</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AGRICULTURE & ENVIRONNEMENT -->
+        <div class="sector page-break">
+            <div class="sector-header">AGRICULTURE & ENVIRONNEMENT</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Agriculteur / Maraîcher</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Optimisation des plannings de cultures</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de contenus pour vente directe (newsletters, posts)</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de fiches produits et recettes</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Analyse météo et prévisions personnalisées</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Apiculteur</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Documentation et suivi des ruches</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de contenus éducatifs sur le miel</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération d'étiquettes et fiches produits</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Communication avec circuits de distribution</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CULTURE & CRÉATION -->
+        <div class="sector page-break">
+            <div class="sector-header">CULTURE & CRÉATION</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Musicien / Compositeur</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de musiques et arrangements</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de visuels pour promotion</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Rédaction de biographies et dossiers de presse</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Transcription et notation musicale</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Artiste peintre / Sculpteur</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de concepts et esquisses</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de contenus pour galeries et expositions</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Rédaction de descriptions d'œuvres</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion de portfolio et communication</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">3</span>Écrivain / Auteur</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Aide à la structure et à l'organisation narrative</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Recherches documentaires automatisées</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de résumés et pitchs</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de contenus promotionnels</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENSEIGNEMENT PRIVÉ -->
+        <div class="sector page-break">
+            <div class="sector-header">ENSEIGNEMENT PRIVÉ</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Professeur particulier / Répétiteur</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération d'exercices personnalisés par niveau</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de supports de cours visuels</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Synthèse des progrès élèves pour parents</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Planning optimisé des cours à domicile</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>Professeur de langues</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création d'exercices conversationnels</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de supports multimédia</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Correction automatique et feedbacks personnalisés</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Adaptation de contenus par niveau CECRL</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÉVÉNEMENTIEL -->
+        <div class="sector page-break">
+            <div class="sector-header">ÉVÉNEMENTIEL</div>
+            <div class="sector-content">
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">1</span>Organisateur d'événements / Wedding planner</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de plannings détaillés jour-J</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de supports visuels (invitations, menus)</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion des prestataires et communications</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Budgets prévisionnels et suivis</span></div>
+                </div>
+                <div class="profile">
+                    <div class="profile-title"><span class="profile-number">2</span>DJ / Animateur événementiel</div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de playlists personnalisées</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Génération de contenus promotionnels</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Gestion des plannings et disponibilités</span></div>
+                    <div class="use-case"><span class="use-case-bullet">▸</span><span class="use-case-text">Création de mix et ambiances sur-mesure</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer page-break">
+            <div class="cta-box">
+                <h3>Prêt à transformer votre activité ?</h3>
+                <p>Ces exemples ne sont qu'un aperçu des possibilités. Votre formation OZFORMATION vous accompagne pour identifier et mettre en place les solutions IA adaptées à VOS besoins spécifiques.</p>
+                <a href="mailto:oztuformation@gmail.com?subject=Demande%20information%20Formation%20IA%20OZFORMATION&body=Bonjour,%0A%0AJe%20souhaite%20obtenir%20plus%20d%27informations%20sur%20la%20formation%20IA%20au%20Service%20des%20Entrepreneurs.%0A%0AMerci%20de%20me%20recontacter.%0A%0ACordialement" class="cta-button">
+                    Démarrez votre transformation IA maintenant
+                </a>
+            </div>
+            <div class="branding">
+                <p><strong>OZFORMATION - L'IA au Service des Entrepreneurs</strong></p>
+                <p>Formation 100% financée | Mise à jour annuelle garantie</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

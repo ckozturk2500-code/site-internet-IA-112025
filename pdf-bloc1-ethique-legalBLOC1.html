@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloc 1 - Éthique & Cadre Légal de l'IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .pdf-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 40px;
+            background: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        /* HEADER */
+        .header {
+            border-bottom: 4px solid #0066FF;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .logo-text {
+            font-size: 32px;
+            font-weight: 900;
+            color: #0066FF;
+            margin-bottom: 10px;
+        }
+        
+        .doc-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: #0066FF;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        
+        .doc-subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        /* SECTIONS */
+        .section {
+            margin: 40px 0;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0066FF;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 6px solid #FF6B35;
+        }
+        
+        .subsection-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0066FF;
+            margin: 30px 0 15px 0;
+        }
+        
+        /* BOXES */
+        .info-box {
+            background: linear-gradient(135deg, #E6F0FF 0%, #F0F8FF 100%);
+            border-left: 6px solid #0066FF;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .info-box h3 {
+            font-size: 20px;
+            color: #0066FF;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .info-box p {
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFF5EE 100%);
+            border-left: 6px solid #FF6B35;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .warning-box h3 {
+            font-size: 20px;
+            color: #FF6B35;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #D4EDDA 0%, #F1F8F4 100%);
+            border-left: 6px solid #28A745;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .success-box h3 {
+            font-size: 20px;
+            color: #28A745;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        /* LISTS */
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 12px 0;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        li strong {
+            color: #0066FF;
+            font-weight: 700;
+        }
+        
+        .key-points {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .key-points li {
+            padding-left: 40px;
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .key-points li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28A745;
+            font-weight: 900;
+            font-size: 24px;
+        }
+        
+        /* TEXT */
+        p {
+            line-height: 1.8;
+            margin: 15px 0;
+            font-size: 16px;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: #FFEB3B;
+            padding: 2px 6px;
+            font-weight: 700;
+        }
+        
+        .stat {
+            font-size: 36px;
+            font-weight: 900;
+            color: #FF6B35;
+            display: block;
+            margin: 10px 0;
+        }
+        
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        
+        th {
+            background: #0066FF;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 700;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #F8F9FA;
+        }
+        
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 2px solid #E6F0FF;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-container">
+        
+        <!-- PAGE 1 -->
+        <div class="page">
+            <div class="header">
+                <div class="logo-text">OZFORMATION</div>
+                <h1 class="doc-title">BLOC 1<br>Éthique & Cadre Légal<br>de l'IA</h1>
+                <p class="doc-subtitle">Document de synthèse | Formation "L'IA au Service des Entrepreneurs"</p>
+            </div>
+            
+            <div class="info-box">
+                <h3>📚 À propos de ce document</h3>
+                <p>Ce PDF constitue votre <strong>guide de référence</strong> pour le Bloc 1 de votre formation. Il résume les points essentiels concernant <strong>l'éthique et le cadre légal</strong> de l'utilisation de l'intelligence artificielle dans votre activité professionnelle.</p>
+                <p><strong>Durée du module :</strong> 45 minutes<br>
+                <strong>Objectif :</strong> Vous sensibiliser aux enjeux juridiques et éthiques pour utiliser l'IA en toute conformité</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">1. RGPD & Protection des Données Personnelles</h2>
+                
+                <h3 class="subsection-title">Qu'est-ce que le RGPD ?</h3>
+                <p>Le <strong>Règlement Général sur la Protection des Données (RGPD)</strong> est la loi européenne qui encadre l'utilisation des données personnelles. Depuis 2025, il s'applique <span class="highlight">pleinement aux systèmes d'intelligence artificielle</span>.</p>
+                
+                <div class="warning-box">
+                    <h3>⚠️ ATTENTION - Sanctions en 2025</h3>
+                    <p>Les sanctions RGPD se durcissent en 2025 :</p>
+                    <ul>
+                        <li><strong>87 sanctions prononcées</strong> par la CNIL en 2024 (contre 42 en 2023)</li>
+                        <li><strong>55,2 millions d'euros d'amendes</strong> totalisées</li>
+                        <li>Amendes pouvant atteindre <strong>jusqu'à 6% du chiffre d'affaires</strong></li>
+                        <li><strong>Délai de 72 heures maximum</strong> pour répondre aux demandes d'effacement (contre 30 jours avant)</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Les obligations RGPD pour les entrepreneurs utilisant l'IA</h3>
+                
+                <ul class="key-points">
+                    <li><strong>Informer les utilisateurs :</strong> Vous devez clairement indiquer quand les personnes interagissent avec une IA (chatbots, contenus générés, etc.)</li>
+                    <li><strong>Obtenir le consentement :</strong> Si vous collectez des données personnelles pour entraîner ou utiliser une IA, le consentement doit être explicite</li>
+                    <li><strong>Respecter les droits des personnes :</strong> Droit d'accès, de rectification, d'effacement (72h maximum), d'opposition</li>
+                    <li><strong>Minimiser les données :</strong> Ne collectez que les données strictement nécessaires à votre objectif</li>
+                    <li><strong>Assurer la sécurité :</strong> Protégez les données contre les accès non autorisés</li>
+                </ul>
+                
+                <div class="info-box">
+                    <h3>💡 BON À SAVOIR</h3>
+                    <p>Depuis février 2025, la CNIL impose d'<strong>informer les personnes lorsque leurs données servent à entraîner un modèle d'IA</strong> et sont potentiellement mémorisées. Les entreprises doivent garantir la suppression des données auprès de tous les sous-traitants.</p>
+                </div>
+                
+                <div class="footer">
+                    OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+                </div>
+                <div class="page-number">Page 1/8</div>
+            </div>
+        </div>
+        
+        <!-- PAGE 2 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">1. RGPD & Protection des Données (suite)</h2>
+                
+                <h3 class="subsection-title">L'AI Act européen (depuis août 2025)</h3>
+                <p>L'<strong>AI Act</strong> est la première législation mondiale sur l'intelligence artificielle. Depuis le <strong>2 août 2025</strong>, les règles concernant les modèles d'IA à usage général sont entrées en vigueur.</p>
+                
+                <table>
+                    <tr>
+                        <th>Niveau de risque</th>
+                        <th>Exemples</th>
+                        <th>Obligations</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Inacceptable</strong> (interdit)</td>
+                        <td>Manipulation comportementale, surveillance de masse, scoring social</td>
+                        <td>❌ Interdiction totale</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Élevé</strong></td>
+                        <td>IA pour recrutement, crédit, RH</td>
+                        <td>✅ Marquage CE obligatoire, analyse de risques, traçabilité</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Limité</strong></td>
+                        <td>Chatbots, contenus générés par IA</td>
+                        <td>⚠️ Obligation d'informer les utilisateurs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Minimal</strong></td>
+                        <td>Filtres anti-spam, recommandations produits</td>
+                        <td>✓ Pas d'obligations spécifiques</td>
+                    </tr>
+                </table>
+                
+                <div class="warning-box">
+                    <h3>⚠️ OBLIGATIONS POUR TOUS LES ENTREPRENEURS</h3>
+                    <ul>
+                        <li>Tout <strong>chatbot</strong> ou système génératif doit <strong>informer l'utilisateur qu'il interagit avec une IA</strong></li>
+                        <li>Les <strong>contenus générés artificiellement</strong> doivent être <strong>clairement signalés comme tels</strong></li>
+                        <li>Les TPE-PME (moins de 500 salariés) ne sont <strong>pas exemptées</strong></li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Bonnes pratiques RGPD pour les entrepreneurs</h3>
+                
+                <div class="success-box">
+                    <h3>✅ CHECKLIST DE CONFORMITÉ</h3>
+                    <ul class="key-points">
+                        <li><strong>Ne jamais</strong> entrer de données clients dans ChatGPT ou des IA publiques sans anonymisation</li>
+                        <li>Utiliser des versions <strong>professionnelles</strong> des outils IA (ChatGPT Enterprise, etc.) qui garantissent la confidentialité</li>
+                        <li><strong>Informer clairement</strong> sur votre site web si vous utilisez des chatbots ou contenus IA</li>
+                        <li>Prévoir un <strong>registre des traitements</strong> si vous collectez des données pour l'IA</li>
+                        <li>Mettre en place une <strong>politique de confidentialité</strong> claire mentionnant l'usage de l'IA</li>
+                        <li>Former vos équipes aux <strong>bonnes pratiques RGPD</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 2/8</div>
+        </div>
+        
+        <!-- PAGE 3 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">2. Droit d'Auteur & Contenus Générés par IA</h2>
+                
+                <h3 class="subsection-title">Qui est propriétaire des créations générées par IA ?</h3>
+                
+                <div class="info-box">
+                    <h3>🎨 PRINCIPE FONDAMENTAL</h3>
+                    <p>En France et en Europe, <strong>seul un humain</strong> peut être titulaire de droits d'auteur. Une œuvre générée <strong>100% par l'IA sans intervention humaine</strong> n'est <span class="highlight">PAS protégeable</span> par le droit d'auteur.</p>
+                </div>
+                
+                <p><strong>Pour qu'une création IA soit protégée, il faut démontrer :</strong></p>
+                <ul>
+                    <li>Une <strong>intervention humaine significative</strong> dans le processus créatif</li>
+                    <li>Des <strong>choix libres et créatifs</strong> de l'utilisateur (prompts détaillés, sélection, modification)</li>
+                    <li>L'<strong>empreinte de la personnalité</strong> de l'auteur humain</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <h3>⚠️ JURISPRUDENCE - Décision de Prague (2023)</h3>
+                    <p>Le tribunal municipal de Prague a <strong>refusé de reconnaître</strong> l'éligibilité au droit d'auteur de contenus générés par DALL·E, au motif qu'<strong>aucune contribution créative humaine</strong> n'avait été démontrée.</p>
+                </div>
+                
+                <h3 class="subsection-title">Conseils pratiques pour protéger vos créations IA</h3>
+                
+                <div class="success-box">
+                    <h3>✅ COMMENT RENFORCER VOS DROITS</h3>
+                    <ul class="key-points">
+                        <li><strong>Conservez tous vos prompts :</strong> Ils prouvent votre contribution créative</li>
+                        <li><strong>Documentez votre processus :</strong> Captures d'écran, itérations, modifications</li>
+                        <li><strong>Personnalisez les résultats :</strong> Plus vous modifiez et affinez, plus vos droits sont forts</li>
+                        <li><strong>Signez vos créations :</strong> Mentionnez "Création assistée par IA - [Votre Nom]"</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Utilisation d'œuvres existantes par l'IA : les risques</h3>
+                
+                <p>Les IA génératives sont entraînées sur des <strong>milliards de contenus</strong> issus d'Internet, dont beaucoup sont <strong>protégés par le droit d'auteur</strong>.</p>
+                
+                <div class="warning-box">
+                    <h3>⚠️ RISQUES DE CONTREFAÇON</h3>
+                    <p><strong>Attention :</strong> Si une IA génère un contenu trop proche d'une œuvre existante, vous pourriez être accusé de <strong>contrefaçon</strong>, même involontairement.</p>
+                    <p><strong>Exemples de litiges en cours :</strong></p>
+                    <ul>
+                        <li>Getty Images contre Stability AI</li>
+                        <li>Éditeurs de presse français (Le Monde, AFP, Le Figaro) contre X et Microsoft</li>
+                        <li>Artistes contre Midjourney pour utilisation non autorisée d'œuvres</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 3/8</div>
+        </div>
+        
+        <!-- PAGE 4 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">2. Droit d'Auteur (suite)</h2>
+                
+                <h3 class="subsection-title">L'obligation de transparence (AI Act - août 2025)</h3>
+                
+                <div class="info-box">
+                    <h3>📋 NOUVELLES OBLIGATIONS DEPUIS AOÛT 2025</h3>
+                    <p>Les fournisseurs d'IA générative à usage général doivent :</p>
+                    <ul>
+                        <li><strong>Publier un résumé des données d'entraînement</strong> utilisées</li>
+                        <li><strong>Conserver une documentation technique</strong> et des journaux d'entraînement</li>
+                        <li><strong>Respecter les droits d'auteur</strong> via des mécanismes d'opt-out</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Cas pratiques pour entrepreneurs</h3>
+                
+                <table>
+                    <tr>
+                        <th>Situation</th>
+                        <th>Risque</th>
+                        <th>Solution</th>
+                    </tr>
+                    <tr>
+                        <td>Générer un logo avec DALL-E</td>
+                        <td>⚠️ Moyen - Pas de protection automatique</td>
+                        <td>✅ Documentez vos prompts, modifiez le résultat, signez</td>
+                    </tr>
+                    <tr>
+                        <td>Utiliser ChatGPT pour rédiger vos posts réseaux sociaux</td>
+                        <td>✓ Faible - Textes courts rarement protégés</td>
+                        <td>✅ Personnalisez toujours les contenus</td>
+                    </tr>
+                    <tr>
+                        <td>Créer de la musique avec Suno AI pour votre boutique</td>
+                        <td>✓ Faible - Musiques originales libres de droits</td>
+                        <td>✅ Vérifiez les CGU de la plateforme</td>
+                    </tr>
+                    <tr>
+                        <td>Demander à l'IA de "copier le style" d'un artiste connu</td>
+                        <td>❌ Élevé - Risque de contrefaçon</td>
+                        <td>⚠️ ÉVITEZ - Créez votre propre style</td>
+                    </tr>
+                </table>
+                
+                <div class="success-box">
+                    <h3>✅ RÈGLES D'OR POUR ÉVITER LES PROBLÈMES</h3>
+                    <ul class="key-points">
+                        <li><strong>Ne jamais demander</strong> à l'IA de reproduire le style exact d'un artiste ou d'une marque</li>
+                        <li><strong>Toujours vérifier</strong> les CGU des plateformes IA (droits commerciaux, attribution)</li>
+                        <li><strong>Privilégier les plateformes</strong> qui garantissent la propriété des créations (Adobe Firefly, etc.)</li>
+                        <li><strong>Ajouter votre touche personnelle</strong> à chaque création IA</li>
+                        <li><strong>Mentionner "Création assistée par IA"</strong> par transparence (non obligatoire mais recommandé)</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h3>💡 BON À SAVOIR</h3>
+                    <p>Certaines plateformes comme <strong>Adobe Stock</strong> proposent des bibliothèques d'images générées sous licence commerciale. OpenAI a également signé des accords de licence avec plusieurs éditeurs pour éviter les litiges.</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 4/8</div>
+        </div>
+        
+        <!-- PAGE 5 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">3. Biais Algorithmiques & Discrimination</h2>
+                
+                <h3 class="subsection-title">Qu'est-ce qu'un biais algorithmique ?</h3>
+                
+                <div class="info-box">
+                    <h3>🔍 DÉFINITION</h3>
+                    <p>Un <strong>biais algorithmique</strong> se produit quand une IA discrimine un groupe de personnes en particulier (femmes, personnes racisées, personnes âgées, etc.), reproduisant ainsi des <strong>inégalités existantes</strong> dans la société.</p>
+                </div>
+                
+                <p><strong>Les IA ne sont PAS neutres.</strong> Elles apprennent à partir de données créées par des humains, qui peuvent contenir des préjugés.</p>
+                
+                <h3 class="subsection-title">Types de biais</h3>
+                
+                <div class="warning-box">
+                    <h3>⚠️ DEUX CATÉGORIES DE BIAIS</h3>
+                    <p><strong>1. Biais algorithmiques (données biaisées) :</strong></p>
+                    <ul>
+                        <li>L'IA est entraînée sur des <strong>données historiquement biaisées</strong></li>
+                        <li>Exemple : Un algorithme de recrutement entraîné sur des CV d'un secteur dominé par les hommes défavorisera les femmes</li>
+                        <li>Exemple : Les systèmes de reconnaissance faciale ont <strong>79,6% de visages blancs</strong> dans leurs données d'entraînement (IJB-A)</li>
+                    </ul>
+                    <p><strong>2. Biais sociétaux (préjugés humains) :</strong></p>
+                    <ul>
+                        <li>L'IA reproduit les <strong>stéréotypes</strong> présents dans la société</li>
+                        <li>Exemple : Google Ads proposait plus de pubs pour des postes bien rémunérés aux hommes qu'aux femmes</li>
+                        <li>Les développeurs (majoritairement hommes blancs) transmettent inconsciemment leurs biais</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Exemples concrets de discriminations</h3>
+                
+                <table>
+                    <tr>
+                        <th>Domaine</th>
+                        <th>Cas réel</th>
+                        <th>Impact</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Recrutement</strong></td>
+                        <td>Algorithme d'Amazon qui écartait systématiquement les CV de femmes</td>
+                        <td>❌ Discrimination à l'embauche</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Justice</strong></td>
+                        <td>Logiciel COMPAS (USA) : 40% d'erreur sur les personnes racisées pour prédire la récidive</td>
+                        <td>❌ Injustice dans le système judiciaire</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reconnaissance faciale</strong></td>
+                        <td>Amazon Rekognition confond 28 membres du Congrès US avec des criminels (40% personnes racisées)</td>
+                        <td>❌ Risque d'arrestations injustifiées</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prestations sociales</strong></td>
+                        <td>Pays-Bas : 26 000 parents accusés à tort de fraude par un algorithme</td>
+                        <td>❌ Perte de droits sociaux</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 5/8</div>
+        </div>
+        
+        <!-- PAGE 6 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">3. Biais Algorithmiques (suite)</h2>
+                
+                <h3 class="subsection-title">Pourquoi les entrepreneurs doivent s'en préoccuper ?</h3>
+                
+                <div class="warning-box">
+                    <h3>⚠️ RISQUES POUR VOTRE ENTREPRISE</h3>
+                    <ul>
+                        <li><strong>Sanctions légales :</strong> Discrimination interdite par la loi française et européenne</li>
+                        <li><strong>Atteinte à la réputation :</strong> Scandale médiatique si vos outils IA sont discriminatoires</li>
+                        <li><strong>Perte de clients :</strong> 63% des consommateurs boycottent les entreprises non éthiques</li>
+                        <li><strong>Exclusion de talents :</strong> Recrutement biaisé = perte de diversité et d'innovation</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Comment éviter les biais dans votre usage de l'IA ?</h3>
+                
+                <div class="success-box">
+                    <h3>✅ BONNES PRATIQUES POUR ENTREPRENEURS</h3>
+                    <ul class="key-points">
+                        <li><strong>Toujours garder un humain dans la boucle :</strong> Ne jamais laisser l'IA décider seule (recrutement, crédit, etc.)</li>
+                        <li><strong>Tester vos outils IA :</strong> Vérifier que les résultats ne favorisent pas systématiquement un groupe</li>
+                        <li><strong>Diversifier vos données :</strong> Si vous entraînez une IA, utilisez des données représentatives</li>
+                        <li><strong>Se former aux biais :</strong> Sensibiliser vos équipes à la discrimination algorithmique</li>
+                        <li><strong>Demander la transparence :</strong> Exiger des fournisseurs d'IA des garanties anti-discrimination</li>
+                        <li><strong>Documenter vos décisions :</strong> Prouver que vos processus sont équitables</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h3>📊 EXEMPLE PRATIQUE : RECRUTEMENT AVEC IA</h3>
+                    <p><strong>MAUVAISE PRATIQUE :</strong> Utiliser un outil IA pour trier automatiquement les CV et éliminer 80% des candidatures sans supervision humaine.</p>
+                    <p><strong>BONNE PRATIQUE :</strong></p>
+                    <ul>
+                        <li>L'IA fait une <strong>première présélection</strong></li>
+                        <li>Un humain <strong>vérifie</strong> que tous les profils sont équitablement représentés</li>
+                        <li>Les candidats ont le <strong>droit de contester</strong> une décision automatisée</li>
+                        <li>Vous <strong>auditez régulièrement</strong> l'outil pour détecter des biais</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h3>💡 BON À SAVOIR</h3>
+                    <p>L'<strong>AI Act</strong> interdit les décisions <strong>entièrement automatisées</strong> ayant des effets significatifs sur les personnes (article 22 RGPD). Les systèmes d'IA à haut risque (recrutement, crédit, RH) devront obtenir un <strong>marquage CE</strong> et garantir l'absence de biais.</p>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 6/8</div>
+        </div>
+        
+        <!-- PAGE 7 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">4. Responsabilité & Transparence</h2>
+                
+                <h3 class="subsection-title">Qui est responsable en cas d'erreur de l'IA ?</h3>
+                
+                <div class="info-box">
+                    <h3>⚖️ PRINCIPE JURIDIQUE</h3>
+                    <p>En 2025, <strong>l'entreprise utilisatrice</strong> reste responsable des décisions prises avec l'aide de l'IA, même si l'algorithme est défaillant.</p>
+                </div>
+                
+                <p><strong>La chaîne de responsabilité selon l'AI Act :</strong></p>
+                
+                <table>
+                    <tr>
+                        <th>Acteur</th>
+                        <th>Responsabilité</th>
+                        <th>Exemples</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Développeur d'IA</strong></td>
+                        <td>Défauts de conception, biais, absence d'alertes, documentation incomplète</td>
+                        <td>OpenAI, Midjourney, etc.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fournisseur/Déployeur</strong></td>
+                        <td>Configuration, paramétrage, garanties de sécurité</td>
+                        <td>Votre éditeur de logiciel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Utilisateur professionnel (VOUS)</strong></td>
+                        <td>Usage inadéquat, absence de supervision, décisions finales</td>
+                        <td>Votre entreprise</td>
+                    </tr>
+                </table>
+                
+                <div class="warning-box">
+                    <h3>⚠️ CAS CONCRETS DE RESPONSABILITÉ</h3>
+                    <p><strong>Scénario 1 :</strong> Votre chatbot IA donne une information médicale erronée à un client → <strong>Vous êtes responsable</strong></p>
+                    <p><strong>Scénario 2 :</strong> Une IA de tri de CV écarte systématiquement les femmes → <strong>Vous êtes responsable de discrimination</strong></p>
+                    <p><strong>Scénario 3 :</strong> Une IA génère un contenu diffamatoire sur vos réseaux sociaux → <strong>Vous êtes responsable légalement</strong></p>
+                    <p><strong>Scénario 4 :</strong> Un bug dans l'algorithme d'un fournisseur cause un préjudice → <strong>Responsabilité partagée</strong> entre vous et le fournisseur</p>
+                </div>
+                
+                <h3 class="subsection-title">Obligations de transparence</h3>
+                
+                <div class="info-box">
+                    <h3>📢 CE QUE VOUS DEVEZ OBLIGATOIREMENT COMMUNIQUER</h3>
+                    <ul class="key-points">
+                        <li><strong>Informer que c'est une IA :</strong> "Vous discutez avec un assistant automatisé"</li>
+                        <li><strong>Signaler les contenus générés :</strong> "Image générée par intelligence artificielle"</li>
+                        <li><strong>Expliquer les critères de décision :</strong> Si l'IA refuse un crédit, expliquer pourquoi</li>
+                        <li><strong>Offrir un recours humain :</strong> Possibilité de contester une décision automatisée</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 7/8</div>
+        </div>
+        
+        <!-- PAGE 8 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">5. Synthèse & Checklist Finale</h2>
+                
+                <div class="success-box">
+                    <h3>✅ CHECKLIST ÉTHIQUE & LÉGALE - À RESPECTER ABSOLUMENT</h3>
+                    
+                    <p><strong>RGPD & Données personnelles :</strong></p>
+                    <ul class="key-points">
+                        <li>Ne jamais entrer de données clients dans des IA publiques</li>
+                        <li>Informer clairement sur l'utilisation de l'IA</li>
+                        <li>Respecter le délai de 72h pour les demandes d'effacement</li>
+                        <li>Utiliser des versions professionnelles des outils IA</li>
+                    </ul>
+                    
+                    <p><strong>Droit d'auteur :</strong></p>
+                    <ul class="key-points">
+                        <li>Conserver vos prompts et documenter votre processus créatif</li>
+                        <li>Ne jamais demander de copier le style d'un artiste connu</li>
+                        <li>Personnaliser toujours les contenus générés par IA</li>
+                        <li>Vérifier les CGU des plateformes pour l'usage commercial</li>
+                    </ul>
+                    
+                    <p><strong>Biais & Discrimination :</strong></p>
+                    <ul class="key-points">
+                        <li>Toujours garder un humain dans la boucle pour les décisions importantes</li>
+                        <li>Tester régulièrement vos outils IA contre les biais</li>
+                        <li>Former vos équipes à la non-discrimination</li>
+                        <li>Offrir un droit de contestation aux personnes impactées</li>
+                    </ul>
+                    
+                    <p><strong>Responsabilité & Transparence :</strong></p>
+                    <ul class="key-points">
+                        <li>Informer que les utilisateurs interagissent avec une IA</li>
+                        <li>Signaler clairement les contenus générés par IA</li>
+                        <li>Documenter toutes vos décisions impliquant l'IA</li>
+                        <li>Prévoir un recours humain pour contester les décisions automatisées</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h3>📈 EN RÉSUMÉ : LES CHIFFRES CLÉS 2025</h3>
+                    <ul>
+                        <li><span class="stat">87</span> sanctions RGPD en 2024 (contre 42 en 2023)</li>
+                        <li><span class="stat">6%</span> du CA : amende maximale possible</li>
+                        <li><span class="stat">72h</span> maximum pour répondre aux demandes d'effacement</li>
+                        <li><span class="stat">2 août 2025</span> : entrée en vigueur de l'AI Act</li>
+                        <li><span class="stat">100%</span> des chatbots doivent informer qu'ils sont des IA</li>
+                    </ul>
+                </div>
+                
+                <div class="warning-box">
+                    <h3>⚠️ MESSAGE FINAL</h3>
+                    <p><strong>L'éthique et la conformité ne sont pas des freins, mais des leviers de confiance et de compétitivité.</strong> En 2025, les entreprises qui respectent ces règles gagnent la confiance de leurs clients et évitent des sanctions pouvant mettre en péril leur activité.</p>
+                </div>
+            </div>
+            
+            <div class="footer" style="margin-top: 80px;">
+                <strong>OZFORMATION - L'IA au Service des Entrepreneurs</strong><br>
+                Formation finançable à 100% par votre OPCO (AGEFICE / FAFCEA)<br>
+                📧 oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 8/8</div>
+        </div>
+        
+    </div>
+</body>
+</html>

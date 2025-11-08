@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OZFORMATION - L'IA au Service des Entrepreneurs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .pdf-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 40px;
+            background: white;
+            margin-bottom: 20px;
+            position: relative;
+            page-break-after: always;
+        }
+        
+        /* PAGE 1 - COUVERTURE */
+        .cover {
+            background: linear-gradient(135deg, #0066FF 0%, #0044CC 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .logo-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .logo-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+        
+        .brand-name {
+            font-size: 56px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        
+        .hero-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .main-title {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        .subtitle {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 60px;
+            opacity: 0.95;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat-box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .stat-number {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        /* PAGE 2 */
+        .page-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: #0066FF;
+            margin-bottom: 40px;
+            border-bottom: 4px solid #FF6B35;
+            padding-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0066FF;
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 8px;
+            height: 40px;
+            background: #FF6B35;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFF5EE 100%);
+            border-left: 6px solid #FF6B35;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+        
+        .highlight-box h3 {
+            font-size: 24px;
+            color: #0066FF;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .highlight-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .highlight-box li {
+            font-size: 18px;
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .highlight-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FF6B35;
+            font-weight: 900;
+            font-size: 24px;
+        }
+        
+        .blue-box {
+            background: linear-gradient(135deg, #E6F0FF 0%, #F0F8FF 100%);
+            border-left: 6px solid #0066FF;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+        
+        .blue-box h3 {
+            font-size: 32px;
+            color: #0066FF;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+        
+        .blue-box p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .blue-box strong {
+            color: #FF6B35;
+            font-weight: 700;
+        }
+        
+        /* PAGE 3 - PROGRAMME */
+        .program-block {
+            background: white;
+            border: 3px solid #E6F0FF;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .program-block:hover {
+            border-color: #0066FF;
+            box-shadow: 0 5px 20px rgba(0,102,255,0.1);
+        }
+        
+        .block-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .block-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0066FF 0%, #0044CC 100%);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 900;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .block-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0066FF;
+            flex: 1;
+        }
+        
+        .block-duration {
+            font-size: 16px;
+            color: #FF6B35;
+            font-weight: 700;
+            background: #FFE5D9;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        
+        .block-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            padding-left: 80px;
+        }
+        
+        /* PAGE 4 - CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #0066FF 0%, #0044CC 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 25px;
+            font-weight: 900;
+        }
+        
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 35px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .contact-box {
+            background: white;
+            color: #0066FF;
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 28px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #E6F0FF;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-container">
+        
+        <!-- PAGE 1 - COUVERTURE -->
+        <div class="page cover">
+            <div class="logo-section">
+                <svg class="logo-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="white" stroke-width="6"/>
+                    <path d="M60 100 L90 130 L140 70" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="70" cy="60" r="8" fill="white"/>
+                    <circle cx="100" cy="50" r="8" fill="white"/>
+                    <circle cx="130" cy="60" r="8" fill="white"/>
+                    <line x1="70" y1="60" x2="85" y2="85" stroke="white" stroke-width="4"/>
+                    <line x1="100" y1="50" x2="100" y2="80" stroke="white" stroke-width="4"/>
+                    <line x1="130" y1="60" x2="115" y2="85" stroke="white" stroke-width="4"/>
+                </svg>
+                <div class="brand-name">OZFORMATION</div>
+            </div>
+            
+            <div class="hero-section">
+                <h1 class="main-title">L'IA au Service<br>des Entrepreneurs</h1>
+                <p class="subtitle">Transformez votre activité grâce à l'Intelligence Artificielle</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">58%</div>
+                        <div class="stat-label">des PME françaises utilisent déjà l'IA</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">20h</div>
+                        <div class="stat-label">économisées par mois pour vos tâches</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">finançable par votre OPCO</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PAGE 2 - POURQUOI L'IA MAINTENANT -->
+        <div class="page">
+            <h2 class="page-title">Pourquoi l'IA maintenant ?</h2>
+            
+            <div class="blue-box">
+                <h3>Ne pas maîtriser l'IA aujourd'hui,<br>c'est comme ne pas savoir utiliser Google il y a 20 ans</h3>
+                <p>L'intelligence artificielle n'est plus l'avenir, <strong>c'est le présent</strong>. Chaque jour d'attente, c'est du temps et de l'argent perdus.</p>
+            </div>
+            
+            <h3 class="section-title">Les chiffres qui parlent</h3>
+            
+            <div class="highlight-box">
+                <h3>📊 Impact immédiat sur votre productivité</h3>
+                <ul>
+                    <li><strong>2,1 heures gagnées par semaine</strong> même avec une utilisation basique de l'IA</li>
+                    <li><strong>Plus de 20 heures économisées par mois</strong> pour 63% des utilisateurs quotidiens</li>
+                    <li><strong>Jusqu'à 25% d'augmentation de productivité</strong> selon les études PME</li>
+                </ul>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>💰 Retour sur investissement rapide</h3>
+                <ul>
+                    <li><strong>500 à 2 000 € économisés par mois</strong> pour 66% des petites entreprises</li>
+                    <li><strong>ROI* 76% supérieur</strong> aux grandes entreprises grâce à votre agilité</li>
+                    <li><strong>3,50 € de retour</strong> pour chaque euro investi dans l'IA</li>
+                </ul>
+                <p style="font-size: 14px; margin-top: 15px; opacity: 0.8;">* ROI = Retour sur Investissement</p>
+            </div>
+            
+            <h3 class="section-title">Formation 100% financée</h3>
+            
+            <div class="blue-box">
+                <h3>🎉 Bonne nouvelle !</h3>
+                <p>Votre formation est <strong>financée à 100% par votre OPCO</strong> (AGEFICE ou FAFCEA selon votre activité), <strong>sans utiliser votre CPF</strong>. Vous disposez d'un budget de <strong>600 € à 5 000 € par an</strong> dédié à la formation, renouvelé chaque année. <strong>Ne laissez pas cet argent dormir !</strong></p>
+            </div>
+        </div>
+        
+        <!-- PAGE 3 - PROGRAMME -->
+        <div class="page">
+            <h2 class="page-title">Programme de la Formation</h2>
+            
+            <p style="font-size: 18px; line-height: 1.8; color: #555; margin-bottom: 30px;">
+                Une formation <strong>blended learning</strong> complète et progressive, accessible 100% en ligne avec accompagnement personnalisé en visioconférence.
+            </p>
+            
+            <div class="program-block">
+                <div class="block-header">
+                    <div class="block-number">0</div>
+                    <div class="block-title">Module Vitrine : Présentation</div>
+                    <div class="block-duration">15 min</div>
+                </div>
+                <div class="block-content">
+                    Découvrez le panorama des outils IA avec 4 cas d'usage concrets d'entrepreneurs. Comprenez les chiffres clés et l'urgence d'adopter l'IA maintenant.
+                </div>
+            </div>
+            
+            <div class="program-block">
+                <div class="block-header">
+                    <div class="block-number">1</div>
+                    <div class="block-title">Fondations : Éthique & Cadre Légal</div>
+                    <div class="block-duration">45 min</div>
+                </div>
+                <div class="block-content">
+                    RGPD, droit d'auteur, biais algorithmiques, responsabilité. Maîtrisez les enjeux éthiques et légaux pour utiliser l'IA en toute sécurité.
+                </div>
+            </div>
+            
+            <div class="program-block">
+                <div class="block-header">
+                    <div class="block-number">2</div>
+                    <div class="block-title">Fondations : Bases de l'IA</div>
+                    <div class="block-duration">45 min</div>
+                </div>
+                <div class="block-content">
+                    IA générative, prompts, génération de contenus, formats de réponse. Comprenez comment fonctionne l'IA et comment l'interroger efficacement.
+                </div>
+            </div>
+            
+            <div class="program-block">
+                <div class="block-header">
+                    <div class="block-number">3</div>
+                    <div class="block-title">Pratique : Prompts & Applications</div>
+                    <div class="block-duration">60 min + visio</div>
+                </div>
+                <div class="block-content">
+                    Maîtrisez la rédaction de prompts efficaces. Générez du texte, des images, de la musique et de la vidéo pour votre activité. Atelier pratique en visio.
+                </div>
+            </div>
+            
+            <div class="program-block">
+                <div class="block-header">
+                    <div class="block-number">4</div>
+                    <div class="block-title">Business : Croissance & Développement</div>
+                    <div class="block-duration">45 min</div>
+                </div>
+                <div class="block-content">
+                    Marketing digital IA, prospection automatisée, lead generation, veille stratégique. Exploitez l'IA pour développer votre chiffre d'affaires.
+                </div>
+            </div>
+            
+            <div class="program-block">
+                <div class="block-header">
+                    <div class="block-number">5</div>
+                    <div class="block-title">Projet : Mise en Pratique Personnalisée</div>
+                    <div class="block-duration">Variable + visio</div>
+                </div>
+                <div class="block-content">
+                    Consolidez vos acquis avec un projet réel adapté à votre activité. Accompagnement individualisé et plan d'action sur 3 mois.
+                </div>
+            </div>
+        </div>
+        
+        <!-- PAGE 4 - CTA -->
+        <div class="page">
+            <h2 class="page-title">Passez à l'Action</h2>
+            
+            <div class="highlight-box" style="margin-top: 40px;">
+                <h3>🎯 Ce que vous saurez faire à l'issue de la formation</h3>
+                <ul>
+                    <li><strong>Identifier 3 opportunités concrètes</strong> d'utiliser l'IA dans votre activité</li>
+                    <li><strong>Utiliser 2 à 3 outils IA professionnels</strong> adaptés à vos besoins (ChatGPT, génération d'images, automatisation)</li>
+                    <li><strong>Rédiger des prompts efficaces</strong> pour vos tâches quotidiennes (emails, contenus marketing, visuels)</li>
+                    <li><strong>Automatiser vos tâches répétitives</strong> et gagner jusqu'à 20 heures par mois</li>
+                    <li><strong>Créer du contenu professionnel</strong> (textes, images, musique) sans compétences techniques</li>
+                    <li><strong>Protéger vos données</strong> et respecter le RGPD dans votre usage de l'IA</li>
+                </ul>
+            </div>
+            
+            <div class="blue-box" style="margin-top: 40px;">
+                <h3>➕ OPTION : Journée d'Accompagnement Personnalisé</h3>
+                <p>Besoin d'un accompagnement plus poussé ? Ajoutez <strong>1 journée de coaching individuel</strong> (en visio ou présentiel) pour approfondir les compétences spécifiques à votre activité. Tarif adapté à votre budget d'entreprise.</p>
+            </div>
+            
+            <div class="cta-section">
+                <h2>Prêt à transformer votre activité ?</h2>
+                <p>L'IA n'attend pas. Les entrepreneurs qui adoptent l'IA maintenant prennent<br><strong>30 à 50% d'avance</strong> sur leurs concurrents.</p>
+                <p style="font-size: 22px; margin-top: 30px;"><strong>Contactez-nous pour démarrer votre formation :</strong></p>
+                <div class="contact-box">
+                    📧 oztuformation@gmail.com
+                </div>
+            </div>
+            
+            <div class="footer">
+                <strong>OZFORMATION</strong> - L'IA au Service des Entrepreneurs<br>
+                Formation finançable à 100% par votre OPCO (AGEFICE / FAFCEA) • Sans utiliser votre CPF<br>
+                oztuformation@gmail.com
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloc 3 - Pratique : Prompts & Applications</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .pdf-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 40px;
+            background: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        /* HEADER */
+        .header {
+            border-bottom: 4px solid #0066FF;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .logo-text {
+            font-size: 32px;
+            font-weight: 900;
+            color: #0066FF;
+            margin-bottom: 10px;
+        }
+        
+        .doc-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: #0066FF;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        
+        .doc-subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        /* SECTIONS */
+        .section {
+            margin: 35px 0;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0066FF;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 6px solid #FF6B35;
+        }
+        
+        .subsection-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0066FF;
+            margin: 25px 0 12px 0;
+        }
+        
+        /* BOXES */
+        .info-box {
+            background: linear-gradient(135deg, #E6F0FF 0%, #F0F8FF 100%);
+            border-left: 6px solid #0066FF;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .info-box h3 {
+            font-size: 18px;
+            color: #0066FF;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .info-box p {
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        
+        .definition-box {
+            background: #FFFEF5;
+            border: 2px solid #FFC107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .definition-box strong {
+            color: #F57C00;
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #D4EDDA 0%, #F1F8F4 100%);
+            border-left: 6px solid #28A745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .formula-box h3 {
+            font-size: 18px;
+            color: #28A745;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .example-box {
+            background: #F8F9FA;
+            border-left: 4px solid #6C757D;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 8px;
+        }
+        
+        .example-box h4 {
+            font-size: 16px;
+            color: #495057;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #FFE5D9 0%, #FFF5EE 100%);
+            border-left: 6px solid #FF6B35;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .warning-box h3 {
+            font-size: 18px;
+            color: #FF6B35;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        /* LISTS */
+        ul, ol {
+            margin: 12px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 10px 0;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        li strong {
+            color: #0066FF;
+            font-weight: 700;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding-left: 35px;
+            position: relative;
+            margin: 12px 0;
+        }
+        
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28A745;
+            font-weight: 900;
+            font-size: 20px;
+        }
+        
+        /* TEXT */
+        p {
+            line-height: 1.7;
+            margin: 12px 0;
+            font-size: 15px;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: #FFEB3B;
+            padding: 2px 5px;
+            font-weight: 700;
+        }
+        
+        .code-style {
+            background: #F5F5F5;
+            border: 1px solid #DDD;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+        }
+        
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        
+        th {
+            background: #0066FF;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 700;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background: #F8F9FA;
+        }
+        
+        /* ICONS SVG */
+        .icon-inline {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        
+        .icon-large {
+            width: 60px;
+            height: 60px;
+            margin: 10px auto;
+            display: block;
+        }
+        
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 15px;
+            border-top: 2px solid #E6F0FF;
+            color: #999;
+            font-size: 13px;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            color: #999;
+            font-size: 13px;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .bad-example {
+            background: #FFE5E5;
+            border-left: 4px solid #DC3545;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .bad-example h4 {
+            color: #DC3545;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .good-example {
+            background: #E8F5E9;
+            border-left: 4px solid #28A745;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .good-example h4 {
+            color: #28A745;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-container">
+        
+        <!-- PAGE 1 -->
+        <div class="page">
+            <div class="header">
+                <div class="logo-text">OZFORMATION</div>
+                <h1 class="doc-title">BLOC 3<br>Pratique : Prompts<br>& Applications</h1>
+                <p class="doc-subtitle">Guide de révision | Formation "L'IA au Service des Entrepreneurs"</p>
+            </div>
+            
+            <div class="info-box">
+                <h3>📚 À propos de ce guide</h3>
+                <p>Ce document est votre <strong>aide-mémoire pratique</strong> pour maîtriser la création de prompts efficaces et l'utilisation de l'IA pour générer du texte, des images, de la musique et des vidéos.</p>
+                <p><strong>Durée du module :</strong> 60 minutes<br>
+                <strong>Objectif :</strong> Savoir créer des prompts professionnels pour tous vos besoins</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">1. Rédiger un Prompt Efficace</h2>
+                
+                <div class="definition-box">
+                    📖 <strong>Prompt (nom masculin) :</strong> Instruction en langage naturel que vous donnez à une intelligence artificielle pour obtenir un résultat. Exemple : "Rédige un email de bienvenue pour mes nouveaux clients"
+                </div>
+                
+                <h3 class="subsection-title">La formule du prompt parfait</h3>
+                
+                <div class="formula-box">
+                    <h3>✅ FORMULE R.C.T.F</h3>
+                    <p>Un bon prompt contient toujours ces 4 éléments :</p>
+                    <table style="background: white; margin-top: 15px;">
+                        <tr>
+                            <th style="background: #28A745;">Élément</th>
+                            <th style="background: #28A745;">Explication</th>
+                            <th style="background: #28A745;">Exemple</th>
+                        </tr>
+                        <tr>
+                            <td><strong>R</strong>ôle</td>
+                            <td>Qui doit être l'IA ?</td>
+                            <td>"Tu es un expert marketing"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>C</strong>ontexte</td>
+                            <td>Quelle est la situation ?</td>
+                            <td>"Pour une boutique de fleurs bio"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T</strong>âche</td>
+                            <td>Que doit faire l'IA ?</td>
+                            <td>"Rédige un post Instagram"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>F</strong>ormat</td>
+                            <td>Sous quelle forme ?</td>
+                            <td>"150 mots max, 3 emojis, 2 hashtags"</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3 class="subsection-title">Exemple complet avec la formule R.C.T.F</h3>
+                
+                <div class="comparison">
+                    <div class="bad-example">
+                        <h4>❌ PROMPT FAIBLE</h4>
+                        <div class="code-style">Écris un email</div>
+                        <p style="font-size: 13px; margin-top: 10px;"><strong>Problème :</strong> Trop vague, résultat générique</p>
+                    </div>
+                    
+                    <div class="good-example">
+                        <h4>✅ PROMPT EFFICACE</h4>
+                        <div class="code-style">Tu es un expert en communication (R). Je suis coach sportif et je relance un client qui n'a pas répondu depuis 1 semaine (C). Rédige un email amical et professionnel (T) avec objet + 100 mots max + signature (F).</div>
+                        <p style="font-size: 13px; margin-top: 10px;"><strong>Résultat :</strong> Email personnalisé et prêt à envoyer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 1/6</div>
+        </div>
+        
+        <!-- PAGE 2 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">1. Rédiger un Prompt Efficace (suite)</h2>
+                
+                <h3 class="subsection-title">La méthode par questions (la plus facile)</h3>
+                
+                <div class="info-box">
+                    <h3>💡 TECHNIQUE RECOMMANDÉE POUR DÉBUTANTS</h3>
+                    <p>Plutôt que d'essayer de créer un prompt parfait du premier coup, <span class="highlight">demandez à l'IA de vous poser des questions</span> pour affiner votre demande.</p>
+                </div>
+                
+                <div class="definition-box">
+                    📖 <strong>Template (nom masculin) :</strong> Modèle réutilisable que vous pouvez copier et adapter à vos besoins. Synonyme : gabarit, patron.
+                </div>
+                
+                <div class="formula-box">
+                    <h3>✅ TEMPLATE UNIVERSEL</h3>
+                    <div class="code-style">J'ai besoin de [votre besoin]. Pose-moi toutes les questions nécessaires pour comprendre exactement ce que je veux avant de me proposer une solution.</div>
+                    
+                    <p style="margin-top: 15px;"><strong>Exemples d'utilisation :</strong></p>
+                    <ul style="margin-top: 10px;">
+                        <li>"J'ai besoin de <strong>créer un logo</strong>. Pose-moi toutes les questions..."</li>
+                        <li>"J'ai besoin de <strong>rédiger une newsletter</strong>. Pose-moi toutes les questions..."</li>
+                        <li>"J'ai besoin de <strong>créer une publicité Facebook</strong>. Pose-moi toutes les questions..."</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Pièges à éviter</h3>
+                
+                <div class="warning-box">
+                    <h3>⚠️ LES 5 ERREURS CLASSIQUES</h3>
+                    <table style="background: white; margin-top: 12px;">
+                        <tr>
+                            <th style="background: #FF6B35;">Piège</th>
+                            <th style="background: #FF6B35;">Solution</th>
+                        </tr>
+                        <tr>
+                            <td><strong>1. Prompt trop vague</strong><br>"Fais-moi un truc bien"</td>
+                            <td>✅ Soyez précis : utilisez R.C.T.F ou la méthode par questions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Oublier le contexte</strong><br>Sans dire qui vous êtes</td>
+                            <td>✅ Précisez votre activité, votre public cible, votre objectif</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Ne pas préciser le format</strong><br>L'IA choisit à votre place</td>
+                            <td>✅ Indiquez : longueur, structure, ton, style souhaité</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Tout demander en une fois</strong><br>Prompt de 500 mots</td>
+                            <td>✅ Découpez en étapes : d'abord X, puis Y, enfin Z</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Ne jamais itérer</strong><br>Accepter le 1er résultat</td>
+                            <td>✅ Affinez : "Rends-le plus court / formel / dynamique"</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3 class="subsection-title">Affiner un résultat (itération)</h3>
+                
+                <div class="info-box">
+                    <h3>🔄 L'IA S'AMÉLIORE AVEC VOS RETOURS</h3>
+                    <p>Si le premier résultat ne vous convient pas, continuez la conversation :</p>
+                    <ul class="checklist" style="margin-top: 10px;">
+                        <li>"Rends ce texte plus court et plus dynamique"</li>
+                        <li>"Change le ton pour le rendre plus professionnel"</li>
+                        <li>"Ajoute des chiffres et des données"</li>
+                        <li>"Reformule la fin pour un appel à l'action plus fort"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 2/6</div>
+        </div>
+        
+        <!-- PAGE 3 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">2. IA pour le TEXTE</h2>
+                
+                <h3 class="subsection-title">Applications pratiques pour entrepreneurs</h3>
+                
+                <table>
+                    <tr>
+                        <th>Usage</th>
+                        <th>Template de prompt</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Email commercial</strong></td>
+                        <td>Tu es expert en communication. Rédige un email pour [objectif] destiné à [cible]. Ton : [formel/amical]. Format : objet + 150 mots + CTA.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Post réseaux sociaux</strong></td>
+                        <td>Crée un post [LinkedIn/Instagram/Facebook] pour promouvoir [produit/service]. Public : [cible]. Format : [X] mots, 3 emojis, 2 hashtags.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fiche produit</strong></td>
+                        <td>Rédige une description de [produit] pour mon site e-commerce. Mets en avant : [bénéfices clés]. Format : 200 mots, liste avantages, ton persuasif.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Article de blog</strong></td>
+                        <td>Écris un article sur [sujet] pour [public cible]. Structure : intro, 3 parties, conclusion. 800 mots. Ton : [éducatif/inspirant].</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Réponse client</strong></td>
+                        <td>Un client demande [question/réclamation]. Rédige une réponse professionnelle et empathique. Format : 100 mots max.</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">Exemple détaillé : Email de relance</h3>
+                
+                <div class="example-box">
+                    <h4>📧 PROMPT COMPLET</h4>
+                    <div class="code-style">Tu es expert en communication commerciale. Je suis photographe de mariage et j'ai envoyé un devis il y a 10 jours à un couple qui ne répond plus. Rédige un email de relance amical mais professionnel qui :
+- Rappelle brièvement notre échange
+- Propose mon aide pour toute question
+- Crée une urgence légère (disponibilités limitées)
+Format : Objet accrocheur + 120 mots max + signature chaleureuse</div>
+                </div>
+                
+                <h3 class="subsection-title">Astuces pour le texte</h3>
+                
+                <ul class="checklist">
+                    <li><strong>Ton adapté :</strong> Précisez "formel", "amical", "enthousiaste", "sobre"</li>
+                    <li><strong>Longueur :</strong> Indiquez toujours le nombre de mots souhaité</li>
+                    <li><strong>Structure :</strong> "Introduction + 3 points + conclusion"</li>
+                    <li><strong>Mots-clés :</strong> Intégrez des termes importants pour votre secteur</li>
+                    <li><strong>Relecture :</strong> Toujours vérifier et personnaliser le résultat</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 3/6</div>
+        </div>
+        
+        <!-- PAGE 4 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">3. IA pour les IMAGES</h2>
+                
+                <div class="definition-box">
+                    📖 <strong>Visuel (nom masculin) :</strong> Élément graphique (photo, illustration, schéma) utilisé pour la communication. <strong>Infographie :</strong> Présentation visuelle d'informations avec texte, icônes et graphiques.
+                </div>
+                
+                <h3 class="subsection-title">Structure d'un bon prompt image</h3>
+                
+                <div class="formula-box">
+                    <h3>✅ FORMULE S.S.C.Q</h3>
+                    <table style="background: white; margin-top: 12px;">
+                        <tr>
+                            <th style="background: #28A745;">Élément</th>
+                            <th style="background: #28A745;">Description</th>
+                            <th style="background: #28A745;">Exemple</th>
+                        </tr>
+                        <tr>
+                            <td><strong>S</strong>ujet</td>
+                            <td>Quoi/Qui dans l'image</td>
+                            <td>"Un coach sportif en action"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>S</strong>tyle</td>
+                            <td>Esthétique visuelle</td>
+                            <td>"Photo réaliste, moderne, dynamique"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>C</strong>ouleurs</td>
+                            <td>Palette de couleurs</td>
+                            <td>"Bleu électrique et orange vif"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Q</strong>ualité</td>
+                            <td>Détails techniques</td>
+                            <td>"Haute résolution, éclairage naturel"</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3 class="subsection-title">Templates pour visuels professionnels</h3>
+                
+                <div class="example-box">
+                    <h4>🎨 LOGO D'ENTREPRISE</h4>
+                    <div class="code-style">Crée un logo minimaliste pour [nom entreprise], spécialisée en [activité]. Style : [moderne/vintage/élégant]. Couleurs : [palette]. Le logo doit évoquer : [valeurs]. Format vectoriel, fond transparent.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>📱 POST INSTAGRAM</h4>
+                    <div class="code-style">Génère une image carrée (1080x1080px) pour Instagram montrant [sujet]. Ambiance [dynamique/zen/professionnelle]. Couleurs : [palette de marque]. Style photo lifestyle, lumière naturelle. Espace en haut pour ajouter du texte.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>🖼️ VISUEL PUBLICITAIRE</h4>
+                    <div class="code-style">Crée une bannière publicitaire pour [produit/service] ciblant [public]. Composition : [description scène]. Style : [moderne/classique]. Couleurs vibrantes, message clair. Format paysage HD.</div>
+                </div>
+                
+                <h3 class="subsection-title">Méthode par questions pour images</h3>
+                
+                <div class="info-box">
+                    <h3>💡 PROMPT SIMPLIFIÉ</h3>
+                    <div class="code-style">J'ai besoin de créer [type de visuel] pour [usage]. Pose-moi des questions sur le style, les couleurs, l'ambiance et les détails importants avant de générer l'image.</div>
+                </div>
+                
+                <h3 class="subsection-title">Pièges à éviter pour les images</h3>
+                
+                <ul class="checklist">
+                    <li><strong>Ne pas copier de style protégé :</strong> Évitez "style Disney" ou "comme [artiste connu]"</li>
+                    <li><strong>Être trop vague :</strong> "Quelque chose de joli" → précisez votre vision</li>
+                    <li><strong>Oublier le format :</strong> Précisez carré, paysage, portrait selon l'usage</li>
+                    <li><strong>Ignorer l'usage :</strong> Une image web ≠ image print (résolution différente)</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 4/6</div>
+        </div>
+        
+        <!-- PAGE 5 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">4. IA pour la MUSIQUE</h2>
+                
+                <div class="definition-box">
+                    📖 <strong>Jingle (nom masculin) :</strong> Courte mélodie reconnaissable utilisée dans la publicité ou l'identité sonore d'une marque. <strong>Ambiance sonore :</strong> Musique de fond créant une atmosphère particulière.
+                </div>
+                
+                <h3 class="subsection-title">Applications pour entrepreneurs</h3>
+                
+                <table>
+                    <tr>
+                        <th>Usage</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Boutique/Restaurant</strong></td>
+                        <td>Playlist d'ambiance personnalisée, 100% libre de droits</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vidéos marketing</strong></td>
+                        <td>Musique de fond pour vos contenus réseaux sociaux</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Attente téléphonique</strong></td>
+                        <td>Musique professionnelle pour votre standard</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jingle d'entreprise</strong></td>
+                        <td>Signature sonore de 5-10 secondes pour votre marque</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Événements</strong></td>
+                        <td>Musique pour inaugurations, portes ouvertes, salons</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">Structure d'un prompt musique</h3>
+                
+                <div class="formula-box">
+                    <h3>✅ FORMULE G.T.I.D</h3>
+                    <ul style="margin-top: 12px;">
+                        <li><strong>G</strong>enre : jazz, classique, électro, acoustique, lounge...</li>
+                        <li><strong>T</strong>empo : lent/doux, modéré, rapide/énergique</li>
+                        <li><strong>I</strong>nstruments : piano, guitare, synthé, orchestre...</li>
+                        <li><strong>D</strong>urée : 30s, 1min, 3min, boucle...</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Exemples de prompts musique</h3>
+                
+                <div class="example-box">
+                    <h4>🎵 AMBIANCE BOUTIQUE (cas Sophie - fleuriste)</h4>
+                    <div class="code-style">Crée une musique d'ambiance pour une boutique de fleurs. Genre : jazz doux mélangé à du classique moderne. Tempo : lent et apaisant. Instruments : piano, cordes légères, flûte. Durée : 3 minutes en boucle. Ambiance : élégante, zen, printanière.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>🎶 JINGLE ENTREPRISE</h4>
+                    <div class="code-style">Génère un jingle court et mémorable pour [nom entreprise], spécialisée en [secteur]. Style : moderne et dynamique. Durée : 8 secondes. Instruments : synthé, percussion rythmée. L'intro doit être accrocheuse et positive.</div>
+                </div>
+                
+                <h3 class="subsection-title">Méthode par questions</h3>
+                
+                <div class="info-box">
+                    <h3>💡 PROMPT SIMPLIFIÉ</h3>
+                    <div class="code-style">J'ai besoin de créer une musique pour [usage précis]. Pose-moi des questions sur le style musical, l'ambiance, le tempo et les instruments avant de générer.</div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                OZFORMATION - L'IA au Service des Entrepreneurs | oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 5/6</div>
+        </div>
+        
+        <!-- PAGE 6 -->
+        <div class="page">
+            <div class="section">
+                <h2 class="section-title">5. IA pour la VIDÉO</h2>
+                
+                <div class="definition-box">
+                    📖 <strong>Boucle vidéo (ou "loop") :</strong> Courte séquence vidéo (3-10 secondes) qui se répète continuellement, souvent utilisée en magasin sur écrans d'affichage ou pour les réseaux sociaux.
+                </div>
+                
+                <h3 class="subsection-title">Applications pratiques</h3>
+                
+                <table>
+                    <tr>
+                        <th>Usage</th>
+                        <th>Exemple concret</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Écrans magasin</strong></td>
+                        <td>Boucles montrant vos produits en action</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stories Instagram/TikTok</strong></td>
+                        <td>Courtes vidéos accrocheuses (5-15s)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Publicités courtes</strong></td>
+                        <td>Clips promotionnels pour réseaux sociaux</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Démo produit</strong></td>
+                        <td>Présentation rapide d'un service/produit</td>
+                    </tr>
+                </table>
+                
+                <h3 class="subsection-title">Structure d'un prompt vidéo</h3>
+                
+                <div class="formula-box">
+                    <h3>✅ ÉLÉMENTS CLÉS</h3>
+                    <ul style="margin-top: 12px;">
+                        <li><strong>Scène :</strong> Que montre la vidéo ? (produit, ambiance, action)</li>
+                        <li><strong>Mouvement :</strong> Statique, zoom, rotation, défilement...</li>
+                        <li><strong>Style visuel :</strong> Moderne, cinématique, épuré...</li>
+                        <li><strong>Durée :</strong> 3s, 5s, 10s, 15s...</li>
+                        <li><strong>Ambiance :</strong> Dynamique, zen, luxe, festif...</li>
+                    </ul>
+                </div>
+                
+                <h3 class="subsection-title">Exemples de prompts vidéo</h3>
+                
+                <div class="example-box">
+                    <h4>🎬 BOUCLE MAGASIN</h4>
+                    <div class="code-style">Crée une boucle vidéo de 8 secondes montrant [produit] dans un environnement [description]. Mouvement : rotation lente à 360°. Style : cinématique, éclairage doux. Ambiance : premium et élégante. La vidéo doit boucler parfaitement.</div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>📱 STORY INSTAGRAM</h4>
+                    <div class="code-style">Génère une vidéo verticale (9:16) de 10 secondes pour promouvoir [offre]. Scène : [description action]. Mouvement dynamique avec zoom progressif. Texte à afficher : [message clé]. Style moderne et coloré.</div>
+                </div>
+                
+                <h3 class="subsection-title">Méthode par questions</h3>
+                
+                <div class="info-box">
+                    <h3>💡 PROMPT SIMPLIFIÉ</h3>
+                    <div class="code-style">J'ai besoin d'une vidéo courte pour [usage]. Pose-moi des questions sur ce que je veux montrer, le style visuel, la durée et l'ambiance.</div>
+                </div>
+                
+                <h3 class="subsection-title">Synthèse du Bloc 3</h3>
+                
+                <div class="info-box">
+                    <h3>📌 POINTS CLÉS À RETENIR</h3>
+                    <ul class="checklist">
+                        <li><strong>Formule R.C.T.F</strong> pour tous vos prompts (Rôle, Contexte, Tâche, Format)</li>
+                        <li><strong>Méthode par questions</strong> = la plus simple pour débuter</li>
+                        <li><strong>Templates réutilisables</strong> pour gagner du temps</li>
+                        <li><strong>Toujours préciser le format</strong> attendu (longueur, style, structure)</li>
+                        <li><strong>Itérer</strong> : le premier résultat n'est jamais le dernier</li>
+                        <li><strong>Adapter</strong> les prompts à votre activité et votre public</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer" style="margin-top: 60px;">
+                <strong>OZFORMATION - L'IA au Service des Entrepreneurs</strong><br>
+                Formation finançable à 100% par votre OPCO (AGEFICE / FAFCEA)<br>
+                📧 oztuformation@gmail.com
+            </div>
+            <div class="page-number">Page 6/6</div>
+        </div>
+        
+    </div>
+</body>
+</html>
