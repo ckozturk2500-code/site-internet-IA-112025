@@ -1,4 +1,3 @@
-Latest content with line numbers:
 1	from flask_sqlalchemy import SQLAlchemy
 2	from datetime import datetime
 3	from werkzeug.security import generate_password_hash, check_password_hash
