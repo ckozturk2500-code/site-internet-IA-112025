@@ -5,10 +5,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from flask import Flask, send_from_directory
 from flask_cors import CORS
-from src.models.user import db
-from src.routes.auth import auth_bp
-from src.routes.progress import progress_bp
-from src.routes.admin import admin_bp
+from user import db
+from auth import auth_bp
+from progress import progress_bp
+from admin import admin_bp
 
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
 
@@ -32,14 +32,14 @@ app.register_blueprint(admin_bp)
 
 # Create tables and initialize data
 with app.app_context():
-    # Créer le répertoire de la base de données si il n'existe pas
+    # Créer le répertoire de la base de données s'il n'existe pas
     db_dir = os.path.join(os.path.dirname(__file__), 'database')
     if not os.path.exists(db_dir):
         os.makedirs(db_dir)
     db.create_all()
     
     # Créer un admin par défaut si aucun n'existe
-    from src.models.user import Admin, AccessCode
+    from user import Admin, AccessCode
     if Admin.query.count() == 0:
         admin = Admin(username='ckozturk', email='admin@ozformation.com')
         admin.set_password('Cko29824344')
@@ -84,4 +84,3 @@ def serve(path):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
-
