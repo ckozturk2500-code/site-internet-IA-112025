@@ -1,4 +1,3 @@
-Text file: user.py
 Latest content with line numbers:
 1	from flask_sqlalchemy import SQLAlchemy
 2	from datetime import datetime
