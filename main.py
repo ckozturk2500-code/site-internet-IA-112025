@@ -1,51 +1,87 @@
-Text file: main.py
-Latest content with line numbers:
-2	import sys
-3	# DON'T CHANGE THIS !!!
-4	sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
-5	
-6	from flask import Flask, send_from_directory
-7	from flask_cors import CORS
-8	from src.models.user import db
-9	from src.routes.auth import auth_bp
-10	from src.routes.progress import progress_bp
-11	from src.routes.admin import admin_bp
-12	
-13	app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
-14	
-15	# Configuration
-16	app.config['SECRET_KEY'] = 'ozformation_secret_key_2024_change_in_production'
-17	app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
-18	app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-19	app.config['SESSION_COOKIE_HTTPONLY'] = True
-20	app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
-21	
-22	# Enable CORS for all origins (needed for deployment)
-23	CORS(app, supports_credentials=True, origins='*')
-24	
-25	# Initialize database
-26	db.init_app(app)
-27	
-28	# Register blueprints BEFORE the catch-all route
-29	app.register_blueprint(auth_bp)
-30	app.register_blueprint(progress_bp)
-31	app.register_blueprint(admin_bp)
-32	
-33	# Create tables and initialize data
-34	with app.app_context():
-35	    # Créer le répertoire de la base de données si il n'existe pas
-36	    db_dir = os.path.join(os.path.dirname(__file__), 'database')
-37	    if not os.path.exists(db_dir):
-38	        os.makedirs(db_dir)
-39	    db.create_all()
-40	    
-41	    # Créer un admin par défaut si aucun n'existe
-42	    from src.models.user import Admin, AccessCode
-43	    if Admin.query.count() == 0:
-44	        admin = Admin(username='ckozturk', email='admin@ozformation.com')
-45	        admin.set_password('Cko29824344')
-46	        db.session.add(admin)
-47	        db.session.commit()
-48	        print("Admin créé : username=ckozturk, password=Cko29824344")
-49	    
-50	    # Créer quelques codes d'accès de démonstration
+import os
+import sys
+# DON'T CHANGE THIS !!!
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
+from flask import Flask, send_from_directory
+from flask_cors import CORS
+from src.models.user import db
+from src.routes.auth import auth_bp
+from src.routes.progress import progress_bp
+from src.routes.admin import admin_bp
+
+app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
+
+# Configuration
+app.config['SECRET_KEY'] = 'ozformation_secret_key_2024_change_in_production'
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+
+# Enable CORS for all origins (needed for deployment)
+CORS(app, supports_credentials=True, origins='*')
+
+# Initialize database
+db.init_app(app)
+
+# Register blueprints BEFORE the catch-all route
+app.register_blueprint(auth_bp)
+app.register_blueprint(progress_bp)
+app.register_blueprint(admin_bp)
+
+# Create tables and initialize data
+with app.app_context():
+    # Créer le répertoire de la base de données si il n'existe pas
+    db_dir = os.path.join(os.path.dirname(__file__), 'database')
+    if not os.path.exists(db_dir):
+        os.makedirs(db_dir)
+    db.create_all()
+    
+    # Créer un admin par défaut si aucun n'existe
+    from src.models.user import Admin, AccessCode
+    if Admin.query.count() == 0:
+        admin = Admin(username='ckozturk', email='admin@ozformation.com')
+        admin.set_password('Cko29824344')
+        db.session.add(admin)
+        db.session.commit()
+        print("Admin créé : username=ckozturk, password=Cko29824344")
+    
+    # Créer quelques codes d'accès de démonstration
+    if AccessCode.query.count() == 0:
+        demo_codes = ['OZLIA123456', 'OZLIA789012', 'OZLIA345678']
+        for code in demo_codes:
+            access_code = AccessCode(code=code)
+            db.session.add(access_code)
+        db.session.commit()
+        print(f"Codes d'accès créés : {', '.join(demo_codes)}")
+
+# Serve static files from /static route
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(app.static_folder, filename)
+
+# Serve React frontend - THIS MUST BE THE LAST ROUTE
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    static_folder_path = app.static_folder
+    if static_folder_path is None:
+        return "Static folder not configured", 404
+
+    # If path starts with 'api/', don't serve static files
+    if path.startswith('api/'):
+        return "Not found", 404
+
+    if path != "" and os.path.exists(os.path.join(static_folder_path, path)):
+        return send_from_directory(static_folder_path, path)
+    else:
+        index_path = os.path.join(static_folder_path, 'index.html')
+        if os.path.exists(index_path):
+            return send_from_directory(static_folder_path, 'index.html')
+        else:
+            return "index.html not found", 404
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
